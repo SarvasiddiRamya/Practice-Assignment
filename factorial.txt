@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace factorial
+{
+    class Program
+    {
+      public  static void Main(string[] args)
+        {
+            int i, fact = 1, number;
+            Console.WriteLine("Enter any Number");
+            number = int.Parse(Console.ReadLine());
+            for(i=1;i<=number;i++)
+            {
+                fact = fact * i;
+            }
+            Console.WriteLine("Factorial of" + number + "is:"+fact);
+            if(fact%2!=0)
+            {
+                Console.WriteLine("Given Factorial number" + fact + "is a prime number");
+            }
+            else
+            {
+                Console.WriteLine("Given Factorial number" + fact + "is not a prime number");
+            }
+            Console.ReadKey();
+        }
+       
+
+    }
+    
+}

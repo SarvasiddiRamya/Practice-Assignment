@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_numbers_bw_2_to_100
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num, i, c;
+            Console.WriteLine("Find the prime numbers with in a range");
+           
+            for (num = 2; num <= 100; num++)
+            {
+                c = 0;
+                for (i = 2; i <= num / 2; i++)
+                {
+                    if (num % i == 0)
+                    {
+                        c++;
+                    }
+                }
+                if (c == 0 && num != 1)
+                    Console.WriteLine("{0}", num);
+
+            }
+
+
+            Console.ReadKey();
+
+        }
+    }
+}

@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _12number_palindrome
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num, rem, sum = 0, temp;
+            Console.WriteLine("To find a number is palindrome or not");
+            Console.WriteLine("Enter the number");
+            num = Convert.ToInt32(Console.ReadLine());
+            temp = num;
+            while(num>0)
+            {
+                rem = num % 10;
+                num = num / 10;
+                sum = sum * 10 + rem;
+
+
+            }
+            Console.WriteLine("The reversed number is:{0}\n", sum);
+            if(temp==sum)
+            {
+                Console.WriteLine("NUMBER IS PALINDROME");
+
+            }
+            else
+            {
+                Console.WriteLine("NUMBER IS NOT A PALINDROME");
+            }
+            Console.ReadKey();
+
+        }
+    }
+}

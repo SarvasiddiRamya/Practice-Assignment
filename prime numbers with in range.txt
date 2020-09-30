@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace prime_numbers_with_in_range
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num, i, c, s, e;
+            Console.WriteLine("Find the prime numbers with in a range");
+            Console.WriteLine("enter the starting number of range:");
+            s = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the ENDING number of range:");
+            e = Convert.ToInt32(Console.ReadLine());
+            for(num=s;num<=e;num++)
+            {
+                c = 0;
+                for(i=2;i<=num;i++)
+                {
+                   // if (num % i == 0)
+                    //{
+                        c++;
+                    //}
+                }
+               // if (c == 0 && num != 1)
+                    Console.WriteLine("{0}", num);
+
+            }
+
+
+            Console.ReadKey();
+
+
+        }
+       
+    }
+}

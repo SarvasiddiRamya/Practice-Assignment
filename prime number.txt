@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prime_number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, m=0, i;
+            Console.WriteLine("enter the number");
+            n = int.Parse(Console.ReadLine());
+            m = n / 2;
+            for(i=2;i<=m;i++)
+            {
+                if(n%i==0)
+                {
+                    Console.WriteLine("number is not a prime number");
+                }
+                else
+                {
+                    Console.WriteLine("number is a prime number");
+                }
+                Console.ReadKey();
+            }
+
+        }
+       
+    }
+}

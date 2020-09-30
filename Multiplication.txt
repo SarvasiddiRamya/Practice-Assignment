@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MULTIPLICATION1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int s, r;
+            Console.WriteLine(" Enter a number for multiplication");
+            s = Convert.ToInt32(Console.ReadLine());
+            for(r=1;r<=12;r++)
+            {
+                int n = s * r;
+                Console.WriteLine(n);
+            }
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Palindrome
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string inputstr, reversestr = null;
+            Console.WriteLine("enter a string");
+            inputstr = Console.ReadLine();
+            if(inputstr!=null)
+            {
+                for(int i = inputstr.Length-1;i>=0;i--)
+                {
+                    reversestr = reversestr + inputstr[i].ToString();
+
+                }
+                if(reversestr==inputstr)
+                {
+                    Console.WriteLine("Palindrome");
+
+                }
+                else
+                {
+                    Console.WriteLine("NOT PALINDROME");
+
+                }
+                Console.ReadKey();
+            }
+        }
+    }
+}
