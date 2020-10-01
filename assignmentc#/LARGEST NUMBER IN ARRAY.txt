@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace largest_number_in_the_array
+{
+    class Program
+    {
+        static int[] arr = { 99, 345, 768, 987, 3114 };
+        //method to find the largest number in array
+        static int largest()
+        {
+            int i;
+            int max = arr[0];
+            for (i = 1; i < arr.Length; i++)
+                if (arr[i] > max)
+                    max = arr[i];
+            return max;
+        }
+  public  static void Main(string[] args)
+        {
+            Console.WriteLine("LARGEST IN GIVEN " + "ARRAY IS " + largest());
+            Console.ReadKey();
+
+        }
+
+
+    }
+}
