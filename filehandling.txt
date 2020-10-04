@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace filehandling
+{
+    class fileexample
+    {
+        class WriteToFile
+        {
+            public void Data()
+            {
+                //this will create a file named sample.txt from you local machine
+                //StreamWriter "name" = new StreamWriter ("location of the file");
+                StreamWriter sw = new StreamWriter("C:\\Users\\Sarvasiddi Ramya\\Desktop\\sample.txt");
+                // To write the console screen
+                Console.Write("enter what text you want to display on the file");
+                Console.WriteLine();
+                //To read the input from the user
+                String str = Console.ReadLine();//my name is ramya
+                //to write a line in the buffer
+                sw.WriteLine(str);
+                //to write the output screen
+                sw.Flush();
+                // we need to the close the screen
+                sw.Close();
+            }
+            //demonstrating streamreader of c# programming
+
+        
+
+            //driver code /main method
+            class Program
+            {
+                static void Main(string[] args)
+                {
+                    WriteToFile wr = new WriteToFile();
+                    wr.Data();
+                    Console.ReadKey();
+                    FileStream Fs = new FileStream("C:\\Users\\Sarvasiddi Ramya\\Desktop\\sample.txt",FileMode.OpenOrCreate);
+                    StreamReader sr = new StreamReader(Fs);
+
+                    string lines =Console.ReadLine();//trying to read the lines from the existing file if present
+                    Console.WriteLine(lines);
+                    sr.Close();//closing the streamreader
+                    Fs.Close();//closing the file on the specified location
+
+                }
+            }
+        }
+    }
+}

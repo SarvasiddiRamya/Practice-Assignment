@@ -1,0 +1,107 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace setandget
+{
+    public class Person
+    {
+
+        private string name;//Field-Variable Field
+        private int age;
+        private string city;
+        private long mobilenumber;
+        private string email_id;
+        private string driving_license;
+        private string pan;
+        private long aadhar;
+        private long voter;
+
+        public string Name//Class-property
+        {
+            get { return name; }
+            set { name = value; }
+
+        }
+        public int Age
+        {
+            get { return age; }
+            set { age = value; }
+
+        }
+        public string City
+        {
+            get { return city; }
+            set { city = value; }
+
+        }
+        public long Mobilenumber
+        {
+            get { return mobilenumber; }
+            set { mobilenumber = value; }
+
+        }
+        public string EmailID
+        {
+            get { return email_id; }
+            set { email_id = value; }
+
+        }
+        public string DrivingLicense
+        {
+            get { return driving_license; }
+            set { driving_license = value; }
+
+        }
+        public string Pan
+        {
+            get { return pan; }
+            set { pan = value; }
+
+        }
+        public long Aadhar
+        {
+            get { return aadhar; }
+            set { aadhar = value; }
+
+        }
+        public long Voter
+        {
+            get { return voter; }
+            set { voter = value; }
+
+        }
+
+
+        private static void Main(string[] args)
+        {
+            //Initialising the class Person
+            Person P = new Person();//syntax of creating an object
+                                    //Assign the value to the class property
+            P.Name = "RAMYA";
+            Console.WriteLine(P.Name);
+            P.Age = 20;
+            Console.WriteLine(P.Age);
+            P.City = "Vizag";
+            Console.WriteLine(P.City);
+            P.Mobilenumber = 9933883114;
+            Console.WriteLine(P.Mobilenumber);
+            P.EmailID = "ramya@gmail.com";
+            Console.WriteLine(P.EmailID);
+            P.DrivingLicense = "ap317563";
+            Console.WriteLine(P.DrivingLicense);
+            P.Pan = "EPVPR5432";
+            Console.WriteLine(P.Pan);
+            P.Aadhar = 253464537564;
+            Console.WriteLine(P.Aadhar);
+            P.Voter = 578836788;
+            Console.WriteLine(P.Voter);
+            Console.ReadKey();
+
+        }
+    }
+}
+
+

@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace streamreader
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            FileStream fs = new FileStream("C:\\Users\\Sarvasiddi Ramya\\Desktop\\sample.txt", FileMode.OpenOrCreate);
+            StreamReader sr = new StreamReader(fs);
+            string lines = sr.ReadLine();
+            Console.WriteLine(lines);
+            sr.Close();
+            fs.Close();
+            Console.ReadKey();
+        }
+    }
+
+
+    
+}

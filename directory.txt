@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace directory
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var curerntdirectory = Directory.GetCurrentDirectory();
+            Console.WriteLine(curerntdirectory);
+            Console.WriteLine(Directory.GetDirectoryRoot(curerntdirectory));
+            var documentpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var Directoryname = $@"{documentpath}\test";
+            DirectoryInfo Dinfo = Directory.CreateDirectory(Directoryname);
+            Console.WriteLine($"complete name of the directory:{ Dinfo.FullName},Name: {Dinfo.Name},Parent:{Dinfo.Parent}");
+            Console.ReadKey();
+        }
+    }
+}
