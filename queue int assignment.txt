@@ -1,0 +1,115 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace QueueAssignment
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<int> myqueue = new Queue<int>();
+            myqueue.Enqueue(2);
+            myqueue.Enqueue(4);
+            myqueue.Enqueue(6);
+            myqueue.Enqueue(8);
+            myqueue.Enqueue(10);
+            myqueue.Enqueue(12);
+            myqueue.Enqueue(14);
+            myqueue.Enqueue(16);
+            myqueue.Enqueue(18);
+            myqueue.Enqueue(20);
+            foreach(int X in myqueue)
+            {
+                Console.WriteLine("The elements in the queue are:{0}", X);
+
+            }
+            Console.WriteLine("The peek element of the queue is:{0}", myqueue.Peek());
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine(myqueue.Dequeue());//Access the element which is first
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine("The peek elements of the queue is:{0}", myqueue.Peek());
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine("*************************************************");
+            Console.WriteLine(myqueue.ElementAt(0));
+            Console.WriteLine(myqueue.Contains(16));
+            Console.WriteLine(myqueue.Contains(5));
+            myqueue.Enqueue(22);
+            myqueue.Enqueue(24);
+            myqueue.Enqueue(26);
+            myqueue.Enqueue(28);
+            myqueue.Enqueue(30);
+            myqueue.Enqueue(32);
+            myqueue.Enqueue(34);
+            myqueue.Enqueue(36);
+            myqueue.Enqueue(38);
+            myqueue.Enqueue(40);
+
+            foreach (int X in myqueue)
+            {
+                Console.WriteLine("The elements in the queue are:{0}", X);
+
+            }
+            Console.WriteLine("The peek element of the queue is:{0}", myqueue.Peek());
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine("*************************************************");
+            Console.WriteLine(myqueue.Dequeue());//Access the element which is first
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            foreach (int X in myqueue)
+            {
+                Console.WriteLine("The elements in the queue are:{0}", X);
+
+            }
+            Console.WriteLine("The peek elements of the queue is:{0}", myqueue.Peek());
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine("*************************************************");
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            foreach (int X in myqueue)
+            {
+                Console.WriteLine("The elements in the queue are:{0}", X);
+
+            }
+            Console.WriteLine("The peek elements of the queue is:{0}", myqueue.Peek());
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine("*************************************************");
+   
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            foreach (int X in myqueue)
+            {
+                Console.WriteLine("The elements in the queue are:{0}", X);
+
+            }
+            Console.WriteLine("The peek elements of the queue is:{0}", myqueue.Peek());
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine("*************************************************");
+            Console.WriteLine(myqueue.Dequeue());
+            Console.WriteLine(myqueue.Dequeue());
+            foreach (int X in myqueue)
+            {
+                Console.WriteLine("The elements in the queue are:{0}", X);
+
+            }
+       
+            Console.WriteLine("The count in the queue is:{0}", myqueue.Count());
+            Console.WriteLine("*************************************************");
+            Console.ReadKey();
+
+
+
+        }
+    }
+}

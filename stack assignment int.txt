@@ -1,0 +1,122 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Stackassignment
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> Mystack = new Stack<int>();
+            Mystack.Push(2);
+            Mystack.Push(4);
+            Mystack.Push(6);
+            Mystack.Push(8);
+            Mystack.Push(10);
+            Mystack.Push(12);
+            Mystack.Push(14);
+            Mystack.Push(16);
+            Mystack.Push(18);
+            Mystack.Push(20);
+            foreach(int stack in Mystack)
+            {
+                Console.WriteLine("THE ELEMENTS OF MY STACK ARE" + stack);
+            }
+            Console.WriteLine("The elements after applying push:" + Mystack.Count());
+            Console.WriteLine("**************************************************");
+            Console.WriteLine(Mystack.ElementAt(0));//Access the Mystack value using index
+            Console.WriteLine(Mystack.Contains(2));//Check the data in the Mystack
+            Console.WriteLine(Mystack.Contains(14));
+
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+
+          Console.WriteLine("the peek elements of stack is:" + Mystack.Peek());
+            Console.WriteLine("The elements left in mystack after pop operation" + Mystack);
+            foreach(int stack in Mystack)
+            {
+                Console.WriteLine("The elements of Mystack are :", + stack);
+            }
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Count());//Count the data present in Mystack
+            Console.WriteLine("**************************************************");
+
+            Mystack.Push(22);
+            Mystack.Push(24);
+            Mystack.Push(26);
+            Mystack.Push(28);
+            Mystack.Push(30);
+            Mystack.Push(32);
+            Mystack.Push(34);
+            Mystack.Push(36);
+            Mystack.Push(38);
+            Mystack.Push(40);
+            foreach (int stack in Mystack)
+            {
+                Console.WriteLine("The elements of Mystack are :" + stack);
+            }
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+           
+            Console.WriteLine("the peek elements of stack is:" + Mystack.Peek());
+            Console.WriteLine("The elements left in mystack after pop operation" + Mystack);
+            foreach (int stack in Mystack)
+            {
+                Console.WriteLine("The elements of Mystack are :" + stack);
+            }
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Count());//Count the data present in Mystack
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+      
+
+            Console.WriteLine("the peek elements of stack is:" + Mystack.Peek());
+            Console.WriteLine("The elements left in mystack after pop operation" + Mystack);
+            foreach (int stack in Mystack)
+            {
+                Console.WriteLine("The elements of Mystack are :" + stack);
+            }
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Count());//Count the data present in Mystack
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+           
+
+            Console.WriteLine("the peek elements of stack is:" + Mystack.Peek());
+            Console.WriteLine("The elements left in mystack after pop operation" + Mystack);
+            foreach (int stack in Mystack)
+            {
+                Console.WriteLine("The elements of Mystack are :" + stack);
+            }
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Count());//Count the data present in Mystack
+            Console.WriteLine("**************************************************");
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Pop());
+        
+
+             Console.WriteLine("The elements left in mystack after pop operation" + Mystack);
+            foreach (int stack in Mystack)
+            {
+                Console.WriteLine("The elements of Mystack are :" + stack);
+            }
+            Console.WriteLine("THE ELEMENTS AFTER APPLYING POP:" + Mystack.Count());//Count the data present in Mystack
+            Console.WriteLine("**************************************************");
+
+
+
+            Console.ReadKey();
+        }
+    }
+}
