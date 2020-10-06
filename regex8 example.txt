@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace regex8_example
+    {
+        class Program
+        {
+            //C# Program that matches and parses a number
+            static void Main(string[] args)
+            {
+                string input = "Programming is 1000 fun";
+                Match match = Regex.Match(input, @"\d+");
+                if (match.Success)
+                {
+                    int.TryParse(match.Value, out int number);
+                    //show that we have the numbers
+                    Console.WriteLine("Numbers:{0}, {1}", number, number + 1);
+                }
+                Console.ReadKey();
+            }
+        }
+    }
+
+    
+

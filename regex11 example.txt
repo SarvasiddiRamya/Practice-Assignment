@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex11_example
+{
+    class Program
+    {
+        //C# program that uses RegexOptions.IgnoreCase
+        static void Main(string[] args)
+        {
+            const string value = "programming";
+            //This ignores the case of the"TE" characters
+            if (Regex.IsMatch(value, "hhhjggjj...", RegexOptions.IgnoreCase))
+            {
+                Console.WriteLine("True");
+            }
+            else
+            {
+                Console.WriteLine("False");
+            }
+            Console.ReadKey();
+        }
+    }
+}

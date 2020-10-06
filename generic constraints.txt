@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+namespace generic_constraints
+{
+    //we have created a generic class with the type parameter and assigned the constraint exception
+    class Ruby<T> where T : IDisposable
+    {
+        public void test1()
+        {
+            Console.WriteLine("its an example of data constraints with IDisposal");
+        }
+
+    }
+    //we  have created a generic class with the type parameter and assigned the constraint struct
+    class c<T> where T : struct
+    {
+        public void test2()
+        {
+            Console.WriteLine("Its an example of data constraints with structure");
+        }
+
+    }
+    //reference type with constructor
+    class read<V> where V : class, new()
+    {
+        public void test3()
+        {
+            Console.WriteLine("Its an example of data constraints with constructor");
+        }
+
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Ruby<DataTable> ruby = new Ruby<DataTable>();//to store the data with class Ruby
+            c<int> java = new c<int>();
+            read<Program> test = new read<Program>();
+            ruby.test1();
+            java.test2();
+            test.test3();
+            Console.ReadKey();
+
+        }
+    }
+}

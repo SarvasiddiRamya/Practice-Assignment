@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace genericCsharp
+{
+    class example<T> //type parameter<T>
+    {
+        T data; //Type parameter declared
+        //A method for class example
+
+        public example(T check)
+        {
+            this.data = check;
+        }
+        public void Write()
+        {
+            Console.WriteLine("The data passed to the initializer is :" + this.data);
+        }
+    }
+
+    //driver method/main method
+                    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //use the generic type example with an integer/string type parameter
+            //instatiating the class example
+            example<int> result1 = new example<int>(100);
+
+            example<string> result2 = new example<string>("ramya");
+            //invoking the method Write() with object created result1 and result2
+            result1.Write();
+            result2.Write();
+
+            Console.ReadKey();
+        }
+    }
+}

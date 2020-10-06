@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace regex7_example
+{
+    class Program
+    {
+        //C# Program that uses static regex
+        static void Main(string[] args)
+        {
+            //the input string
+            string input = "/content/AWDEGTswerf_32456.aspx";
+            //this calls the static method specified
+            Console.WriteLine(RegexUtil.MatchKey(input));
+        }
+    }
+    static class RegexUtil
+    {
+        static Regex _regex = new Regex(@"/content/([A-Za-z0-9\-]+)\.aspx$");
+        //this returns the key that is matched within the input
+        static public string MatchKey(string input)
+        {
+            Match match = _regex.Match(input.ToLower());
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+    }
+
+}
