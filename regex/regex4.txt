@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex4
+{
+    class Program
+    {
+        //c# program that uses NextMatch
+
+
+              static void Main(string[] args)
+        {
+            string value = "4 and 5";
+            Match match = Regex.Match(value, @"\d");
+
+            if (match.Success)
+            {
+                Console.WriteLine(match.Value);
+            }
+            if (match.Success)
+            {
+                Console.WriteLine(match.Value);
+            }
+            Console.ReadKey();
+        }
+    }
+}

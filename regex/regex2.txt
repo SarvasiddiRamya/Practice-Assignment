@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace REGEX2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //C# Program that uses Regex.Match
+            string input = "/content/alternate-1.aspx";
+            Match match = Regex.Match(input, @"content/([A-Za-z0-9\-]+)\.aspx$", RegexOptions.IgnoreCase);
+            if(match.Success)
+            {
+                string key = match.Groups[1].Value;
+                Console.WriteLine(key);
+            }
+            Console.ReadKey();
+        }
+    }
+}

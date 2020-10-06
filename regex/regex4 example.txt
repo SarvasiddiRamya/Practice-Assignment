@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex4_example
+{
+    class Program
+    {
+        
+                   //c# program that uses NextMatch
+
+
+            static void Main(string[] args)
+            {
+                string value = "fun3 and happy7";
+                Match match = Regex.Match(value, @"\d");
+
+                if (match.Success)
+                {
+                    Console.WriteLine(match.Value);
+                }
+            match = match.NextMatch();
+                if (match.Success)
+                {
+                    Console.WriteLine(match.Value);
+                }
+                Console.ReadKey();
+            }
+    }
+}

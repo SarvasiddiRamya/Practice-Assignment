@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex3_example
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //C# Program that uses IsMatch,start and end
+            string test = "programming is fun";
+            if (Regex.IsMatch(test, "^p"))
+            {
+                Console.WriteLine("START MATCHES");
+            }
+            if (Regex.IsMatch(test, "o$"))
+            {
+                Console.WriteLine("END MATCHES");
+            }
+            Console.ReadKey();
+
+        }
+    }
+}

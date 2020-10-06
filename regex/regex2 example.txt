@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex2_example
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //C# Program that uses Regex.Match
+            string input = "/CSharp/programming-1.net";
+            Match match = Regex.Match(input, @"CSharp/([A-Za-z0-9\-]+)\.net$", RegexOptions.IgnoreCase);
+            if (match.Success)
+            {
+                string key = match.Groups[1].Value;
+                Console.WriteLine(key);
+            }
+            Console.ReadKey();
+        }
+    }
+}

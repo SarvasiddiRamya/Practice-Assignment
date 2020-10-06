@@ -1,0 +1,22 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Regex regex = new Regex(@"\d+");
+            Match match = regex.Match("a55a");
+            if(match.Success)
+            {
+                Console.WriteLine("MATCH VALUE: " + match.Value);
+            }
+            Console.ReadKey();
+        }
+    }
+}
