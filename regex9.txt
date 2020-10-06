@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+
+namespace regex9
+{
+    class Program
+    {
+        //C# Program thats shows value, length, index
+        static void Main(string[] args)
+        {
+            Match m = Regex.Match("123Axxxxy", @"A.*y");
+            if(m.Success)
+            {
+                Console.WriteLine("Value = " + m.Value);
+                Console.WriteLine("Length = " + m.Length);
+                Console.WriteLine("Index = " + m.Index);
+            }
+            Console.ReadKey();
+        }
+    }
+}

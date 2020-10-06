@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex5example
+{
+    class Program
+    {
+        //C# PROGRAM that uses Replace,replaces with pattern
+        static void Main(string[] args)
+        {
+            //REPLACE two or more digits with a string
+            Regex regex = new Regex(@"\d+");
+            string result = regex.Replace("It is 67 6487", "so hot");
+            Console.WriteLine("Result: {0}", result);
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace REGEX10_EXAMPLE
+{
+    class Program
+    {
+     
+             //C# Program that uses Regex.IsMatch method
+            static bool Isvalid(string value)
+            {
+                return Regex.IsMatch(value, @"^[a-zA-Z0-9]*$");
+            }
+            static void Main(string[] args)
+            {
+                Console.WriteLine(Isvalid("PROGRAMMING0123"));
+                Console.WriteLine(Isvalid("yfhghtrdgrtgrt"));
+                Console.WriteLine(Isvalid(":;?//"));
+                Console.ReadKey();
+            }
+
+        
+    }
+
+}

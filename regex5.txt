@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
+namespace regex5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //C# PROGRAM that uses Replace,replaces with pattern
+           
+            
+                //REPLACE two or more digits with a string
+                Regex regex = new Regex(@"\d+");
+                string result = regex.Replace("cat 123 123", "bird");
+                Console.WriteLine("Result: {0}", result);
+                Console.ReadKey();
+            }
+    }
+}
