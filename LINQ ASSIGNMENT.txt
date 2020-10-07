@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace LINQ_ASSIGNMENT
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IList<Employee> emplist = new List<Employee>()
+            {
+                new Employee(){EmpID = 2, EmployeeName = "Ramya", Salary = 28000, Designation = "Manager"},
+                 new Employee(){EmpID = 3, EmployeeName = "Firdos", Salary = 33000, Designation = "Manager"},
+                  new Employee(){EmpID = 4, EmployeeName = "Sravani", Salary = 35000, Designation = "Data Analyst"},
+                   new Employee(){EmpID = 5, EmployeeName = "Pratyusha",  Salary = 40000, Designation = "HR" } ,
+            };
+            //Applying LINQ logic similar to SQL
+            var empname = emplist.Where(s => s.Salary > 35000).Select(s => s).Where(e => e.EmpID > 3).Select(s => s.EmployeeName);
+            var empname1 = emplist.Where(s => s.Salary < 35000).Select(s => s).Where(e => e.EmpID > 2).Select(s => s.EmployeeName);
+            var empname2 = emplist.Where(s => s.Salary > 28000).Select(s => s).Where(e => e.EmpID > 2).Select(s => s.EmployeeName);
+            var empname3 = emplist.Where(s => s.Salary > 30000).Select(s => s).Where(e => e.EmpID > 3).Select(s => s.EmployeeName);
+            var empname4 = emplist.Where(s => s.Salary < 35000).Select(s => s).Where(e => e.EmpID < 5).Select(s => s.EmployeeName);
+            var d = emplist.Where(s => s.EmpID < 5).Select(s => s).Where(e => e.Designation == "Manager").Select(s => s.Salary);
+            var f = emplist.Where(s => s.EmpID > 2).Select(s => s).Where(e => e.Designation == "Manager").Select(s => s.Salary);
+            var g = emplist.Where(s => s.EmpID > 2).Select(s => s).Where(e => e.Salary == 40000).Select(s => s.Designation);
+            var i = emplist.Where(s => s.Salary < 40000).Select(s => s).Where(e => e.Designation == "Manager").Select(s => s.EmpID);
+            var K = emplist.Where(s => s.EmployeeName == "Ramya").Select(s => s).Where(e => e.Designation == "Manager").Select(s => s.Salary);
+
+            //groupby execution
+            var EmployeesGroupByBatch = from s in emplist
+                                       group s by s.EmpID into sb
+                                       orderby sb.Key
+                                       select new { sb.Key, sb };
+            foreach (var group in EmployeesGroupByBatch)
+            {
+                Console.WriteLine("EmpID {0}: ", group.Key);
+               // Console.WriteLine("*******************");
+            }
+            var EmployeesGroupByBatch1 = from s in emplist
+                                        where s.EmpID > 2//Query Statement
+                                        where s.Salary > 28000//one query statement
+                                        group s by s.Designation into sb //another query statement
+                                        orderby sb.Key
+                                        select new { sb.Key, sb };
+            foreach (var group in EmployeesGroupByBatch1)
+            {
+                Console.WriteLine("EmpID {0}: ", group.Key);
+            }
+
+            foreach ( var x in empname)
+            {
+                Console.WriteLine("Output of empname: " +  x);
+                
+            }
+            foreach (var y in empname1)
+            {
+                Console.WriteLine("Output of empname1: "  +  y);
+            }
+            foreach (var z in empname2)
+            {
+                Console.WriteLine("output of empname2: "  +  z);
+                
+            }
+            foreach (var s in empname3)
+            {
+                Console.WriteLine("output of empname3: "  +  s);
+                
+            }
+            foreach (var r in empname4)
+            {
+                Console.WriteLine("output of empname4: "  +  r);
+                
+            }
+            foreach (var m in d)
+            {
+                Console.WriteLine("output of d: " + m);
+
+            }
+            foreach (var e in f)
+            {
+                Console.WriteLine("output of f: " + e);
+
+            }
+            foreach (var h in g)
+            {
+                Console.WriteLine("Output of g: " + h);
+            }
+            foreach (var j in i)
+            {
+                Console.WriteLine("Output of i: " + j);
+            }
+            foreach (var l in K)
+            {
+                Console.WriteLine("Output of K: " + l);
+            }
+            Console.ReadKey();
+        }
+        public class Employee
+        {
+            public int EmpID{ get; set; }
+
+            public string EmployeeName{ get; set; }
+
+            public int Salary { get; set; }
+
+            public string  Designation{ get; set; }
+        }
+
+    }
+}
