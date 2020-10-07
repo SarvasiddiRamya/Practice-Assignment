@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace delegate4_example
+{
+    //multicast delegate returning a value
+    public delegate string  MyDelegate(); //declaring a delegate
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyDelegate del1 = ClassA.MethodA;
+            MyDelegate del2 = ClassB.MethodB;
+
+            MyDelegate del = del1 + del2;
+            Console.WriteLine(del());// returns world
+            Console.ReadKey();
+        }
+    }
+
+    class ClassA
+    {
+        public static string MethodA()
+        {
+            return "hello";
+        }
+    }
+
+    class ClassB
+    {
+        public static string MethodB()
+        {
+            return "world";
+        }
+    }
+
+
+
+}

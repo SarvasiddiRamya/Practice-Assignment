@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DELEGATE3_EX
+{
+    public delegate void MyDelegate(int msg); //declaring a delegate
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+
+            MyDelegate del1 = ClassA.MethodA;
+            MyDelegate del2 = ClassB.MethodB;
+
+            MyDelegate del = del1 + del2; // combines del1 + del2
+            del(100);
+
+            MyDelegate del3 = (int msg) => Console.WriteLine("Called lambda expression: " + msg);
+            del += del3; // combines del1 + del2 + del3
+            del(250);
+
+            del = del - del2; // removes del2
+            del(899);
+
+            del -= del1; // removes del1
+            del(6665);
+            Console.ReadKey();
+
+        }
+
+        class ClassA
+        {
+            public static void MethodA(int message)
+            {
+                Console.WriteLine("Called ClassA.MethodA() with parameter: " + message);
+            }
+        }
+
+        class ClassB
+        {
+            public static void MethodB(int message)
+            {
+                Console.WriteLine("Called ClassB.MethodB() with parameter: " + message);
+            }
+        }
+    }
+}

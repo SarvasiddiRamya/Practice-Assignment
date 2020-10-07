@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace delegate5_example
+{
+    //Generic delegate
+    public delegate T add<T>(T param1, T param2, T param3); // generic delegate
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            add<int> sum = Sum;
+            Console.WriteLine(sum(565, 76, 765));
+
+            add<string> con = Concat;
+            Console.WriteLine(con("I ", "AM ", "HAPPY"));
+            Console.ReadKey();
+        }
+
+        public static int Sum(int val1, int val2, int val3)
+        {
+            return val1 + val2 + val3;
+        }
+
+        public static string Concat(string str1, string str2, string str3)
+        {
+            return str1 + str2 + str3;
+        }
+    }
+}
