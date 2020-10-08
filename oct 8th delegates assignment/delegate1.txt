@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambdaAssignment
+{
+
+    public delegate double Addnums1Delegate(int x, float y, double z);
+    public delegate string msg1Delegate(string name);
+    public delegate void mulnums1Delegate(int x, float y, double z);
+    public delegate void msg2Delegate(string name1);
+    public delegate bool CheckLengthDelegate(string str);
+    public delegate bool CheckLengthDelegate1(int s);
+
+
+    class Program
+    {
+        //method with returning value
+        public static double Addnums1(int x, float y, double z)
+        {
+            return (x + y + z);
+
+
+        }
+        public static string msg1(string name)
+        {
+            return ("Good " + name + "Girls");
+
+        }
+        //non return type
+        public static void mulnums1(int x, float y, double z)
+        {
+            Console.WriteLine(x * y * z);
+
+        }
+        public static void msg2(string name1)
+        {
+            Console.WriteLine(name1);
+
+        }
+        //bool type
+        public static bool CheckLength(string str)
+        {
+            //check the string whose length is less than 4 should print true else false
+            if (str.Length < 8)
+                return true;
+            else
+            return false;
+        }
+        public static bool CheckLength1(int s)
+        {
+            //check the string whose length is less than 4 should print true else false
+           if (s <= 10)
+                return true;
+           else
+            return false;
+        }
+
+
+        static void Main(string[] args)
+        {
+             Addnums1Delegate obj1 = new Addnums1Delegate(Addnums1);
+            double result = obj1.Invoke(20, 3.14f, 5467.123456);
+            Console.WriteLine(result);
+
+            msg1Delegate obj2 = new msg1Delegate(msg1);
+            string result1 = obj2.Invoke("Evening ");
+            Console.WriteLine(result1);
+                    
+            mulnums1Delegate obj3 = new mulnums1Delegate(mulnums1);
+            obj3.Invoke(50, 3.14f, 14345.12345);
+
+            msg2Delegate obj4 = new msg2Delegate(msg2);
+            obj4.Invoke("Programming is fun");
+
+            CheckLengthDelegate obj5 = new CheckLengthDelegate(CheckLength);
+            bool check = obj5.Invoke("RAMYA");
+            Console.WriteLine(check);
+
+            CheckLengthDelegate1 obj6 = new CheckLengthDelegate1(CheckLength1);
+            bool check1 = obj6.Invoke(12345678);
+            Console.WriteLine(check1);
+            Console.ReadKey();
+
+
+        }
+    }
+}
+    

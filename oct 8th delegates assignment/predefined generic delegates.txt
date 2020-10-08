@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace predefined_genaeric_delegates
+{
+  
+        public delegate double Addnums1Delegate(int x, float y, double z);
+        public delegate int mulDelegate(int a, int b);
+        public delegate void squareDelegate(float x);
+        public delegate void msg2Delegate(string name1);
+        public delegate bool CheckLengthDelegate(string str);
+        public delegate bool CheckLengthDelegate1(int s);
+
+
+        class Program
+        {
+        
+            static void Main(string[] args)
+            {
+                Func< int , float , double, double > AD = (x, y, z)  =>  x + y + z;
+      
+                double result = AD(20, 3.14f, 5467.123456);
+                Console.WriteLine(result);
+
+                 Func<int, int,int>  MD = (a , b)  => a*b ;
+      
+                int result1 = MD(5, 8);
+                Console.WriteLine(result1);
+
+            Action<int> sd = x =>
+           {
+             
+               Console.WriteLine("square of the input is: ");
+               Console.WriteLine(x * x);
+               
+           };
+            sd(4);
+            Action<string> msgD = name1 =>               
+                {
+                    Console.WriteLine(name1  +  "is fun");
+
+                };
+            msgD("Programming");
+             
+
+                Predicate<string> CD = str =>
+                {
+                    //check the string whose length is less than 4 should print true else false
+                    if (str.Length < 8)
+                        return true;
+                    else
+                        return false;
+                };
+                bool check = CD("RAMYA");
+                Console.WriteLine(check);
+
+                Predicate<int>  CD1 = (int s) =>
+                {
+                    //check the string whose length is less than 4 should print true else false
+                    if (s <= 10)
+                        return true;
+                    else
+                        return false;
+                };
+
+                bool check1 = CD1(12345678);
+                Console.WriteLine(check1);
+                Console.ReadKey();
+
+
+            }
+        }
+}
+
+
