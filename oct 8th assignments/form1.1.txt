@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace formassignment1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Button b = new Button();//reference to the button
+            b.Text = " Click Me "; //Text implemented as "click me" on the button apperance
+            b.Size = new Size(100, 50);//size mentioned for the button
+            b.Location = new Point(350, 200);//point located on the button created
+            this.Controls.Add(b);//Controlling mechanism of button should go the center
+
+            //delegate with anonymous method
+            b.Click += delegate (object sender1, EventArgs e1)
+            {
+                MessageBox.Show("Hello World ");
+            };
+        }
+    }
+}

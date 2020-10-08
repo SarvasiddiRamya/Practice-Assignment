@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace anonymous_delegate_assign1
+{
+    class Program
+    {
+        public delegate void numDelegate(int a, int b);
+        public delegate void msgDelegate( string msg);
+        static void Main(string[] args)
+        {
+            numDelegate ND = delegate (int a, int b)
+            {
+                Console.WriteLine(a * b);
+            };
+            ND(5, 6);
+            numDelegate ND1 = delegate (int a, int b)
+            {
+                Console.WriteLine(a + b);
+            };
+            ND1(14, 31);
+            msgDelegate mD = delegate (string msg)
+            {
+                Console.WriteLine("hiii " + msg);
+            };
+            mD.Invoke("Everyone");
+            msgDelegate mD1 = delegate (string msg)
+            {
+                Console.WriteLine("enjoy "  +  msg  +  "day");
+            };
+            mD1.Invoke("the  ");
+            Console.ReadKey();
+            
+        }
+    }
+}
