@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace SINGLE_THREADING
+{
+    class Program
+    {
+        public string Thread1(string name)
+        {
+            return " Thread1 started ";
+        }
+        public int Thread2(int i)
+        {
+            for( i = 0; i < 15; i++)
+            {
+                if(i == 5)
+                {
+                    Console.WriteLine("The thread2 is sleeping");
+                    Thread.Sleep(10000);
+                }
+                Console.WriteLine("The thread is at the position :" + i);
+            }
+            return i;
+        }
+        public string Thread3(string str)
+        {
+            if(str.Length > 4)
+            {
+                Console.WriteLine("The thread3 is sleeping");
+                Thread.Sleep(5000);
+            }
+            return "Thread3 started ";
+        }
+        public double Thread4( double length, double width)
+        {
+            Console.WriteLine("Area of a rectangle is");
+            return length * width;
+        }
+
+                              
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            string s = p.Thread1("Ramya");
+            Console.WriteLine(s);
+            int j = p.Thread2(8);
+            Console.WriteLine(j);
+            string h = p.Thread3("Good Afternoon");
+            Console.WriteLine(h);
+            double c = p.Thread4(56.34, 12.34);
+            Console.WriteLine(c);
+            Console.ReadKey();
+
+        }
+    }
+}
