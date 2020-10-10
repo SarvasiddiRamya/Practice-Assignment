@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace jointhread2
+{
+    class Program
+    {
+        public void display()
+        {
+            lock (this)//it is used to lock the other thread to execute where the current thread is sleeping time to response
+            {
+                Console.WriteLine("Csharp is an");
+                Thread.Sleep(5000);
+                Console.WriteLine("object oriented language");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            //  p.display();
+            Thread t1 = new Thread(p.display);
+            Thread t2 = new Thread(p.display);
+            Thread t3 = new Thread(p.display);
+            t1.Start();
+            t2.Start();
+            t3.Start();
+            Console.ReadKey();
+        }
+    }
+}

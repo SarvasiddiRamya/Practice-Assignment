@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace joinmultithreading
+{
+    class Program
+    {
+        static void Thread1()
+        {
+            for (int i = 1; i < 15; i++)
+            {
+                Console.WriteLine("Thread1 is started " + i);
+            }
+        }
+
+        static void Thread2()
+        {
+
+            for (int i = 1; i < 15; i++)
+            {
+                Console.WriteLine("Thread2 is started " + i);
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("Demonstration on join method in multithreading");
+            Console.WriteLine("Main thread started");
+            Thread T = new Thread(Thread1);
+            Thread T1 = new Thread(Thread2);
+            T.Start();
+            T1.Start();
+            T.Join();
+            T1.Join();
+            Console.WriteLine("Main thread is exiting");
+            Console.ReadKey();
+        }
+    }
+}
