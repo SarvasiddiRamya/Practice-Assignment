@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using  System.Threading;
+
+namespace mutex
+{
+    class Program
+    {
+        private static Mutex mutex = new Mutex();
+        static void Main(string[] args)
+        {
+         for (int i = 1; i < 5; i++)
+            {
+                Thread obj = new Thread(mutexdemo);
+                obj.Name = "Thread " + i;
+                obj.Start();
+            }
+            Console.ReadKey();
+        }
+        static void mutexdemo()
+        {
+            Console.WriteLine(Thread.CurrentThread.Name + " enters for processing");
+            //blocks the currenrt thread until the current Waitone methods receive a signal
+            mutex.WaitOne();
+            Console.WriteLine("Success: " + Thread.CurrentThread.Name + " is processing now");
+            Thread.Sleep(3000);
+            Console.WriteLine("Exit: " + Thread.CurrentThread.Name + " is processing now");
+            //call the releasemutex method  to unlock 
+            mutex.ReleaseMutex();
+        }
+    }
+}

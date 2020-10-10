@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace deadlock
+{
+    class Program
+    {    public class locks
+        {
+            static readonly object firstlock = new object();
+            static readonly object secondlock = new object();
+            static void Threads()
+            {
+                Console.WriteLine("Locking Firstlock");
+                lock (firstlock)
+                {
+                    Console.WriteLine("locked firstlock");
+                    //wait until the first thread has grabbed secondlock
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Locking Secondlock");
+                    lock (secondlock)
+                    {
+                        Console.WriteLine("locked secondlock");
+                    }
+                    Console.WriteLine("Released Secondlock");
+                }
+                Console.WriteLine("Released firstlock");
+            }
+            class deadlock
+            {
+                static void Main(string[] args)
+                {
+                    new Thread(new ThreadStart(Threads)).Start();
+                    //wait until the other threads has grabbed firstlock
+                    Thread.Sleep(5000);
+                    Console.WriteLine("locked secondlock");
+                    lock(secondlock)
+                    {
+                        Console.WriteLine("locked secondlock");
+                        Console.WriteLine("locked firstlock");
+                        lock(firstlock)
+                        {
+
+                            Console.WriteLine("locked firstlock");
+
+                        }
+                        Console.WriteLine("Released firstlock");
+
+                    }
+                    Console.WriteLine("Released secondlock");
+                    Console.ReadLine();
+                }
+            }
+        }
+    }
+}
