@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace eventassignment
+{
+    public delegate void d_OddNumber();//Declared delegate
+    class Program
+    {
+        //this is subscriber class
+        static void Main(string[] args)
+        {
+            OddNumbers O = new OddNumbers();
+            //Events gets binded with delegates or registered with delegates
+            O.ev_OddNumber += EventMessage;
+            O.Odd();
+            Console.ReadKey();
+
+        }
+        static void EventMessage()
+        {
+            Console.WriteLine("**********Event Executed : This is odd number***********");
+        }
+    }
+    //this is publisher class
+    class OddNumbers
+    {
+        public event d_OddNumber ev_OddNumber;
+        public void Odd()
+        {
+            if(ev_OddNumber != null)
+            {
+                ev_OddNumber();//raised event
+            }
+        }
+    }
+}
