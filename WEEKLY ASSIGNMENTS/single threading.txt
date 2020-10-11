@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace single_threading1
+{
+    class Program
+    {
+        public string Thread1(string name)
+        {
+            return "thread1 started";
+        }
+        public int thread2(int i)
+        {
+            for(i=0; i<10; i++)
+            {
+                if(i==7)
+                {
+                    Console.WriteLine("the thread2 is sleeping");
+                    Thread.Sleep(4000);
+
+                }
+            }
+            return i;
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            string r = p.Thread1("ramya");
+            Console.WriteLine(r);
+            int b = p.thread2(5);
+            Console.WriteLine(b);
+            Console.ReadKey();
+
+        }
+    }
+}

@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace jagged_array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            //Declaration and initialization of jaaged array with 4 2-D ARRAYS
+            
+             int[][,] jagged_arr1 = new int[4][,] {new int[, ] {{11, 33}, {14, 27}},
+                                    new int[, ] {{10, 22}, {44, 56}, {18, 70}},
+                                    new int[, ] {{17, 68}, {31, 41}, {80, 96}},
+                                    new int[, ] {{11, 22}, {99, 88}, {0, 9}}};
+
+            // Display the array elements: 
+            // Length method returns the number of arrays contained in the jagged array 
+            for (int i = 0; i < jagged_arr1.Length; i++)
+            {
+
+                int x = 0;
+
+                // GetLength method takes integer x which specifies the dimension of the array 
+                for (int j = 0; j < jagged_arr1[i].GetLength(x); j++)
+                {
+
+                    // Rank is used to determine the total dimensions of an array  
+                    for (int k = 0; k < jagged_arr1[j].Rank; k++)
+                        Console.Write("Jagged_Array[" + i + "][" + j + ", " + k + "]: "
+                                                    + jagged_arr1[i][j, k] + " ");
+                    Console.WriteLine();
+                }
+                x++;
+                Console.WriteLine();
+                Console.ReadKey();
+            }
+        }
+    }
+} 
+                
+            

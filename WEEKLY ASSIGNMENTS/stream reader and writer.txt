@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace stream_reader
+{
+    class Program
+    {
+        public void data()
+        {
+            StreamWriter sw = new StreamWriter("C:\\Users\\Sarvasiddi Ramya\\Desktop\\sample.txt");
+
+            Console.WriteLine("enter the text that is to be displayed");
+            string str = Console.ReadLine();
+            sw.WriteLine(str);
+            sw.Flush();
+            sw.Close();
+            
+        }
+    }
+
+        class FILEHANDLING
+        {
+
+
+            static void Main(string[] args)
+            {
+            Program p = new Program();
+            p.data();
+                FileStream fs = new FileStream("C:\\Users\\Sarvasiddi Ramya\\Desktop\\sample.txt", FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(fs);
+                string lines = sr.ReadLine();
+                Console.WriteLine(lines);
+                sr.Close();
+                fs.Close();
+                Console.ReadKey();
+            }
+        }
+    
+}

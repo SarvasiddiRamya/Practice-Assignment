@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lambda_operator
+{
+    class Program
+    {
+
+        public delegate void addnum(int a, int b);
+        public delegate void subnum(int a, int b);
+        public delegate void area(double height, double width);
+        public delegate void perimeter(double height, double width);
+        static void Main(string[] args)
+        {
+
+            // creating object "obj" of class "Program" 
+            Program obj = new Program();
+            addnum del_obj1 = ( a,  b) =>
+            {
+                Console.WriteLine( a + b);
+            };
+            del_obj1.Invoke(6437, 67880);
+         
+            subnum del_obj2 = (a, b) =>
+            {
+                Console.WriteLine("(126324 - 678) = {0}", a - b);
+            };
+            del_obj2(126324, 678);
+            area del_obj3 = ( height,  width) =>
+
+            {
+                Console.WriteLine("Area is: {0}", (width * height));
+            };
+            del_obj3(5.3, 9.2);
+            Console.WriteLine();
+            perimeter del_obj4 =  ( height, width) =>
+
+            {
+                Console.WriteLine("Area is: {0}", (width * height));
+            };
+
+            del_obj4(7.3, 9.2);
+            Console.WriteLine();
+            Console.ReadKey();
+        }
+    }
+}
+
+   
+
+
+    
+

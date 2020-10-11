@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace QUEUE1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a queue  Using Queue class 
+            Queue my_queue = new Queue();
+
+            // Adding elements in Queue Using Enqueue() method 
+            my_queue.Enqueue("Hii");
+            my_queue.Enqueue(168);
+            my_queue.Enqueue("*************");
+            my_queue.Enqueue(2.4);
+            my_queue.Enqueue("SMILE");
+            // Checking if the element is present in the Queue or not 
+            if (my_queue.Contains("Hii") == true)
+            {
+                Console.WriteLine("Element available...!!");
+            }
+            else
+            {
+                Console.WriteLine("Element not available...!!");
+            }
+            // Obtain the topmost element of my_queue Using Dequeue method 
+            Console.WriteLine("Topmost element of my_queue"
+                         + " is: {0}", my_queue.Dequeue());
+            
+
+            Console.WriteLine("Total elements present in my_queue: {0}",
+                                                        my_queue.Count);
+            my_queue.Dequeue();
+        
+
+            // After Dequeue method 
+            Console.WriteLine("Total elements present in my_queue: {0}",
+                                                        my_queue.Count);
+
+            // Remove all the elements from the queue 
+            my_queue.Clear();
+
+            // After Clear method 
+            Console.WriteLine("Total elements present in my_queue: {0}",
+                                                        my_queue.Count);
+           
+            Console.ReadKey();
+        }
+    }
+}

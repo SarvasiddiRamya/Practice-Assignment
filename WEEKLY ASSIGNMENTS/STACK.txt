@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace Stack1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a stack using Stack class
+            Stack my_stack = new Stack();
+
+            // Adding elements in the Stack Using Push method
+            my_stack.Push("Programming ");
+            my_stack.Push("is");
+            my_stack.Push("FUN");
+            my_stack.Push(null);
+            my_stack.Push(1234);
+            my_stack.Push(6456.78237);
+
+            // Accessing the elements of my_stack Stack Using foreach loop
+            foreach (var elem in my_stack)
+            {
+                Console.WriteLine(elem);
+            }
+            // Obtain the topmost element of my_stack Using Peek method
+            Console.WriteLine("Topmost element of my_stack " +
+                                  "is: {0}", my_stack.Peek());
+
+            Console.WriteLine("Total elements present in" +
+                  " my_stack: {0}", my_stack.Count);
+
+            my_stack.Pop();
+
+            // After Pop method
+            Console.WriteLine("Total elements present in " +
+                          "my_stack: {0}", my_stack.Count);
+
+
+            // Remove all the elements from the stack
+            my_stack.Clear();
+
+            // After Pop method
+            Console.WriteLine("Total elements present in " +
+                          "my_stack: {0}", my_stack.Count);
+     
+
+            Console.ReadKey();
+        }
+    }
+}

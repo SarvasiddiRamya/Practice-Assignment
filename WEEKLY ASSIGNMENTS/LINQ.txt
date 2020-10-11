@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LINQ
+{
+    class Program
+    {
+        public class student
+        {
+            public int stdID { get; set; }
+
+            public string stdName { get; set; }
+
+            public string branch { get; set; }
+
+           
+        }
+        static void Main(string[] args)
+        {
+            IList<student> stdlist = new List<student>()
+            {
+                new student(){stdID = 2, stdName = "Ramya",  branch = "ece"},
+                 new student(){stdID = 3, stdName = "Firdos", branch = "eee"},
+                  new student(){stdID = 4, stdName = "Sravani", branch = "cse"},
+                   new student(){stdID = 5, stdName = "Pratyusha",branch = "IT" } ,
+            };
+            //Applying LINQ logic similar to SQL
+
+            var a = stdlist.Where(s => s.stdID > 5).Select(s => s).Where(e => e.stdName == "Firdos").Select(s => s.branch);
+            var d = stdlist.Where(s => s.stdID < 5).Select(s => s).Where(e => e.branch == "cse").Select(s => s.stdName);
+            var f = stdlist.Where(s => s.branch == "eee").Select(s => s).Where(e => e.stdName == "Firdos").Select(s => s.stdID);
+            //groupby execution
+            var studentGroupByBatch = from s in stdlist
+                                        group s by s.stdID into sb
+                                        orderby sb.Key
+                                        select new { sb.Key, sb };
+            foreach (var group in studentGroupByBatch)
+            {
+                Console.WriteLine("stdID {0}: ", group.Key);
+                // Console.WriteLine("*******************");
+            }
+            var studentGroupByBatch1 = from s in stdlist
+                                         where s.stdID > 2//Query Statement
+                                         group s by s.branch into sb //another query statement
+                                         orderby sb.Key
+                                         select new { sb.Key, sb };
+            foreach (var group in studentGroupByBatch1)
+            {
+                Console.WriteLine("EmpID {0}: ", group.Key);
+            }
+            //sorting
+            var sortingofemployee = from e in stdlist
+                                    orderby e.stdID, e.stdName
+                                    select new
+                                    {
+                                        StudentName = e.stdName,
+                                        StudentID = e.stdID
+                                    };
+            sortingofemployee.ToList().ForEach(e => Console.WriteLine("studentname : {0}", e.StudentName + " , " + " studentid" + e.StudentID));
+
+
+            foreach (var x in a)
+            {
+                Console.WriteLine( x);
+
+            }
+            foreach (var y in d)
+            {
+                Console.WriteLine( y);
+            }
+            foreach (var z in f)
+            {
+                Console.WriteLine( z);
+
+            }
+            Console.ReadKey();
+            
+        }
+    }
+}

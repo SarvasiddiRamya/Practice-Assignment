@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace Multithreading1
+{
+        class Program
+        {
+            public string Thread1(string name)
+            {
+                return "thread1 started";
+            }
+            public int thread2(int i)
+            {
+                for (i = 0; i < 10; i++)
+                {
+                    if (i == 7)
+                    {
+                        Console.WriteLine("the thread2 is sleeping");
+                        Thread.Sleep(4000);
+
+                    }
+                Console.WriteLine("the thread is at the position : " + i);
+                }
+                return i;
+            }
+            static void Main(string[] args)
+            {
+                Program p = new Program();
+            Thread T1 = new Thread(delegate ()
+            {
+                Console.WriteLine(p.Thread1("ramya"));
+            });
+            Thread T2 = new Thread(delegate ()
+            {
+                Console.WriteLine(p.thread2(5));
+            });
+            T1.Start();
+            T2.Start();
+                   
+                Console.ReadKey();
+
+            }
+        }
+ 
+    
+}

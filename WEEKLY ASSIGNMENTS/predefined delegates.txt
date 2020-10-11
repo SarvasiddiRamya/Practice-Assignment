@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace predefined_delegate
+{
+    class Program
+    {
+        public delegate int addnum(int a, int b);
+        public delegate string msg(string name);
+        public delegate bool msg1(string name);
+        static void Main(string[] args)
+        {
+            Func<int, int, int> obj = (a, b) =>
+            {
+                return a + b;
+            };
+            int i = obj.Invoke(5, 6);
+            Console.WriteLine(i);
+            //Action
+            Action<string> obj1 = (name) =>
+            {
+                Console.WriteLine(name);
+            };
+            obj1.Invoke("Ramya");
+            Console.WriteLine(obj1);
+            //predicate
+            Predicate<string> obj2 = str =>
+            {
+                //check the string whose length is less than 4 should print true
+                if (str.Length < 4)
+                    return true;
+                else
+                    return false;
+
+            };
+            bool check = obj2("fun");
+            Console.WriteLine(check);
+
+                Console.ReadKey();
+
+        }
+    }
+}

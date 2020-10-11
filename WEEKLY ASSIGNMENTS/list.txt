@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LIST
+{
+    class Program
+    {
+        public static void Main(String[] args)
+            {
+
+                string[] str1 = { "Truth", "or",  "Dare" };
+
+                // Creating an List<T> of strings adding str1 elements to List 
+                List<String> firstlist = new List<String>(str1);
+
+                // displaying the elements of firstlist 
+                Console.WriteLine("Elements in List: \n");
+
+                foreach (string dis in firstlist)
+                {
+                    Console.WriteLine(dis);
+                }
+
+                Console.WriteLine(" ");
+
+                // contains new Elements which to be added in the List 
+                str1 = new string[] { "Happy", "Smile",  "Laugh" };
+            // using InsertRange Method 
+            Console.WriteLine("InsertRange(1, str1)\n");
+
+            // adding elements after 2nd index of the List 
+            firstlist.InsertRange(1, str1);
+
+            // displaying the elements of List after InsertRange Method 
+            foreach (string res in firstlist)
+            {
+                Console.WriteLine(res);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+    

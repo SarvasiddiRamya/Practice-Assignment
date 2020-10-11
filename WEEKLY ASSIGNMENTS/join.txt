@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+
+namespace joins
+{
+    class Program
+    {
+        public void thread()
+        {
+          for(int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
+                Thread.Sleep(8000);
+            }
+        }
+        public void thread1()
+        {
+            Console.WriteLine("second thread is working");
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            Console.WriteLine("Main method starts");
+            Thread t1 = new Thread(new ThreadStart(p.thread));
+            Thread t2 = new Thread(new ThreadStart(p.thread1));
+            t1.Start();
+            t2.Start();
+            t1.Join();
+            t2.Join();
+            Console.WriteLine("main method ends");
+            Console.ReadKey();
+        }
+    }
+}

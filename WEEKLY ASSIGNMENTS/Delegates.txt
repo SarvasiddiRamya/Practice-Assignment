@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace delegates
+{
+    class Program
+    {
+        public delegate void addnum(int a, int b);
+        public delegate void subnum(int a, int b);
+
+        // method "sum" 
+        public void sum(int a, int b)
+        {
+            Console.WriteLine("(6437 + 67880) = {0}", a + b);
+        }
+
+        // method "subtract" 
+        public void subtract(int a, int b)
+        {
+            Console.WriteLine("(126324 - 678) = {0}", a - b);
+        }
+        // declaring delegate 
+        public delegate void rectDelegate(double height,
+                                          double width);
+
+        // "area" method 
+        public void area(double height, double width)
+        {
+            Console.WriteLine("Area is: {0}", (width * height));
+        }
+
+        // "perimeter" method 
+        public void perimeter(double height, double width)
+        {
+            Console.WriteLine("Perimeter is: {0} ", 2 * (width + height));
+        }
+
+        // Main Method 
+        public static void Main(string[] args)
+        {
+
+            // creating object "obj" of class "Program" 
+            Program obj = new Program();
+            addnum del_obj1 = new addnum(obj.sum);
+            subnum del_obj2 = new subnum(obj.subtract);
+            rectDelegate rectdele = new rectDelegate(obj.area);
+            rectdele += obj.perimeter;
+
+            // pass the values to the methods by delegate object 
+            del_obj1(6437, 67880);
+            del_obj2(126324, 678);
+            rectdele.Invoke(7.3, 9.2);
+            Console.WriteLine();
+
+            // call the methods with different values 
+            rectdele.Invoke(12.3, 6.3);
+            Console.ReadKey();
+        }
+        
+
+    }
+}
