@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript Dates</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d;
+    </script>
+    <script type="text/javascript">
+        //4 ways to create date object
+        //new date()
+        var d = new Date();
+        document.write(d + "<br>");
+        //new date(year, month, day, hours, minutes, seconds, milliseconds)
+        var d = new Date(2019, 09, 14, 11, 25, 45, 23);
+        document.write(d + "<br>");
+        //new date(datestring)
+        var d = new Date("July 30, 2017 10:23:45");
+        document.write(d + "<br>");
+        //new date(milliseconds)
+        var d = new Date(0);
+        document.write(d + "<br>");
+        var d = new Date(100000000000);
+        document.write(d + "<br>");
+
+        //Date methods
+        //displaying dates
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.toString();
+        document.write(d + "<br>");
+
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.toUTCString();
+        document.write(d + "<br>");
+
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.toDateString();
+        document.write(d + "<br>");
+
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.toISOString();
+        document.write(d + "<br>");
+
+
+    </script>
+</body>
+</html>

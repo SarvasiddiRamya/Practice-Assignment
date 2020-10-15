@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: lightcyan;
+            font-family:Arial;
+        }
+    </style>
+      <form name="Quiz" id="Quiz">
+        <div>
+            <p>1. Who invented JavaScript?</p>
+            <p><input type="radio" name="Q1" value="Douglas Crockford" />A. Douglas Crockford </p>
+            <p><input type="radio" name="Q1" value="Sheryl Sandberg" />B. Sheryl Sandberg</p>
+            <p><input type="radio" name="Q1" value="Brendan Eich" />C. Brendan Eich</p>
+            <p><input type="radio" name="Q1" value="Dennis Ritchie" />D. Dennis Ritchie</p>
+        </div>
+        <div>
+            <p>2. Which one of these is a JavaScript package manager?</p>
+            <p><input type="radio" name="Q2" value="Node.JS" />A. Node.JS</p>
+            <p><input type="radio" name="Q2" value="TypeScript" />B.TypeScript</p>
+            <p><input type="radio" name="Q2" value="npm" />C. npm</p>
+            <p><input type="radio" name="Q2" value="All of the above" />D. All of the above</p>
+        </div>
+        <div>
+            <p>3. Which tool can you use to ensure code quality?</p>
+            <p><input type="radio" name="Q3" value="Angular" />A.Angular </p>
+            <p><input type="radio" name="Q3" value="JQuery" />B. JQuery</p>
+            <p><input type="radio" name="Q3" value="RequireJS" />C.RequireJS</p>
+            <p><input type="radio" name="Q3" value="ESLint" />D.ESLint </p>
+        </div>
+        <div>
+            <p>4.Which language is used for styling web pages?</p>
+            <p><input type="radio" name="Q4" value="HTML" />A. HTML</p>
+            <p><input type="radio" name="Q4" value="CSS" />B. CSS</p>
+            <p><input type="radio" name="Q4" value="XML" />C.XML</p>
+            <p><input type="radio" name="Q4" value="JQuery" />D.JQuery</p>
+        </div>
+        <div>
+            <p>5. Which is used for connect to database?</p>
+            <p><input type="radio" name="Q5" value="PHP" />A. PHP</p>
+            <p><input type="radio" name="Q5" value="HTML" />B. HTML</p>
+            <p><input type="radio" name="Q5" value="JS" />C. JS</p>
+            <p><input type="radio" name="Q5" value="All" />D. All</p>
+        </div>
+        <input type="submit" name="" value="Submit" id="button" onclick="check()" />
+      </form>
+      <script type="text/javascript">
+        function check() {
+            var q1 = document.Quiz.Q1.value;
+            var q2 = document.Quiz.Q2.value;
+            var q3 = document.Quiz.Q3.value;
+            var q4 = document.Quiz.Q4.value;
+            var q5 = document.Quiz.Q5.value;
+            var c = 0;
+            if (q1 == "Brendan Eich") { c++ }
+            if (q2 == "npm") { c++ }
+            if (q3 == "ESLint") { c++ }
+            if (q4 == "CSS") { c++ }
+            if (q5 == "PHP") { c++ }
+            var result = document.getElementById('result');
+            result.textContent = document.write("Total Score :" + c);
+
+        }
+      </script>
+  
+
+</body>
+</html>

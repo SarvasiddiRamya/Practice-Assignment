@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>nested for loop</title>
+</head>
+<body>
+    <script type="text/javascript">
+        document.write("start" + "<br>");
+        for (var i = 1; i <= 3; i++) {
+            document.write("value of i" + i + "<br>");
+            for (var j = 1; j <= 5; j++) {
+                document.write("value of j" + j + "<br>");
+            }
+            document.write("**********************" + "<br>");
+        }
+        document.write("end" + "<br>");
+    </script>
+
+    <script type="text/javascript">
+
+        document.write("start" + "<br>");
+        var count = 1;
+        for (var i = 1; i <= 3; i++) {
+            document.write("value of i" + i + "<br>");
+            for (var j = 1; j <= i; j++) {
+                document.write(count);
+                count++;
+            }
+            document.write("<br>");
+        }
+        document.write("end" + "<br>");
+    </script>
+
+    <script type="text/javascript">
+
+        student = { id: 1, name: "sachin", dept: "cse" };
+
+        document.write(student.id + "<br>");
+        document.write(student.name + "<br>");
+        document.write(student.dept + "<br>");
+        document.write("======================== <br>");
+        var employee = new Object();
+        employee.id = 100;
+        employee.name = "ramya";
+        document.write(employee.id + "<br>");
+        document.write(employee.name + "<br>");
+        document.write("======================== <br>");
+        function emp(id, name) {
+            this.id = id;
+            this.name = name;
+
+        }
+        empobj = new emp(5, "sri");
+        document.write(empobj.id + "<br>");
+        document.write(empobj.name + "<br>");
+        document.write("======================== <br>");
+        for (var i = 1; i <= 5; i++) {
+            document.write("*".repeat(i) + "<br>");
+        }
+    </script>
+
+    <script type="text/javascript">
+
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= 5; j++) {
+                if (i == 1 || i == 5 || j == 1 || j == 5) {
+                    document.write("*");
+                }
+                else {
+                    document.write("&nbsp;&nbsp;");
+                }
+            }
+
+            document.write("<br>");
+        }
+    </script>
+    <script>
+        var n = 5;
+        for (var i = 1; i <= n; i++) {
+            for (var j = 1; j <= n; j++) {
+                if (i == j)
+                    document.write("*" + "<br>");
+
+                else
+                    document.write("&nbsp&nbsp");
+
+            }
+            document.write("<br>");
+        }
+
+    </script>
+    <script type="text/javascript">
+        var a = 10;
+        document.write("value of a" + a + "<br>");
+        var marks = [56, 67, 32, 45];
+        document.write("value of a" + marks[0] + "<br>");
+        document.write("value of a" + marks[1] + "<br>");
+        document.write("value of a" + marks[2] + "<br>");
+        document.write("value of a" + marks[3] + "<br>");
+        document.write("===================<br>");
+        document.write("using for loop");
+        for (var i = 0; i < marks.length; i++) {
+            document.write("marks are " + marks[i] + "<br><br>");
+        }
+
+    </script>
+    <script type="text/javascript">
+        var a = 5;
+        document.write("value of a :" + a + "<br>");
+        var marks = [56, 67, 32, 45, 89];
+        var b = Math.max(56, 67, 32, 45, 89);
+        document.write("value of b :" + b + "<br>");
+        var c = Math.min(56, 67, 32, 45, 89);
+        document.write("value of c :" + c + "<br>");
+    </script>
+    <script type="text/javascript">
+
+        var names = new Array();
+        names[0] = "ramya";
+        names[1] = "firdos";
+        document.write(names.length + "<br>");
+        document.write("======================<br>");
+
+    </script>
+    <script type="text/javascript">
+        function myclick() {
+            alert("hello u have clicked");
+        }
+        function mydoubleclick() {
+            alert("hello u have double clicked");
+        }
+        function mymouseover() {
+            alert("hello u have mouse over clicked");
+        }
+        function mymouseout() {
+            alert("hello u have mouse out clicked");
+        }
+        function keypress() {
+
+            alert("on keypress");
+        }
+
+
+    </script>
+    <button onclick="myclick()">click</button>
+    <button ondblclick="mydoubleclick()">doubleclick</button>
+    <button onmouseover="mymouseover()">mouse over</button>
+    <button onmouseout="mymouseout()">mouse out</button>
+    <input type="text" name="u" onkeypress="keypress()" />
+
+</body>
+</html>

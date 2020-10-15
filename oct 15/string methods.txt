@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>String methods</title>
+</head>
+<body>
+<script type="text/javascript">
+    var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var sln = txt.length;
+    document.write("length of txt :" + sln + "<br>");
+    document.write("===================<br>");
+    var str = "Please locate where 'locate' occurs!";
+    var pos = str.indexOf("locate");
+    document.write("position :" + pos + "<br>");
+    document.write("===================<br>");
+    var str1 = "Please locate where 'locate' occurs!";
+    var pos1 = str1.lastIndexOf("John");
+    var pos2 = str1.lastIndexOf("occurs!");
+    document.write("position : " + pos1 + "<br>");
+    document.write("position :" + pos2 + "<br>");
+    document.write("===================<br>");
+    var str2 = "Please locate where 'locate' occurs!";
+    var pos3 = str2.indexOf("locate", 15);
+    document.write("position :" + pos3 + "<br>");
+    document.write("===================<br>");
+
+    var str3 = "Please locate where 'locate' occurs!";
+    var pos4 = str3.search("locate");
+    document.write("search :" + pos4 + "<br>");
+    document.write("===================<br>");
+
+    var str4 = "Apple, Banana, Kiwi, grapes, orange";
+    var res = str4.slice(21, 27);
+    document.write("slice :" + res + "<br>");
+    document.write("===================<br>");
+
+    var str5 = "Apple, Banana, Kiwi";
+    var res1 = str5.slice(-12, -6);
+    document.write("slice :" + res1 + "<br>");
+    document.write("===================<br>");
+
+    var res2 = str5.slice(7);
+    document.write("slice :" + res2 + "<br>");
+    document.write("===================<br>");
+
+    var res3 = str5.slice(-12);
+    document.write("slice :" + res3 + "<br>");
+    document.write("===================<br>");
+
+    var res4 = str5.substring(7, 13);
+    document.write("substring :" + res4 + "<br>");
+    document.write("===================<br>");
+    var res5 = str5.substr(7, 6);
+    document.write("substr :" + res5 + "<br>");
+    document.write("===================<br>");
+    var res6 = str5.substr(7);
+    document.write("substr :" + res6 + "<br>");
+    document.write("===================<br>");
+    var res7 = str5.substr(-4);
+    document.write("substr :" + res7 + "<br>");
+    document.write("===================<br>");
+    str6 = "Please visit Microsoft!";
+    var n = str6.replace("Microsoft", "W3Schools");
+    document.write("replace :" + n + "<br>");
+    document.write("===================<br>");
+
+    str7 = "Please visit Microsoft and Microsoft!";
+    var n1 = str7.replace("Microsoft", "W3Schools");
+    document.write("replace :" + n1 + "<br>");
+    document.write("===================<br>");
+
+    str8 = "Please visit Microsoft!";
+    var n2 = str8.replace(/MICROSOFT/i, "W3Schools");
+    document.write("replace :" + n2 + "<br>");
+    document.write("===================<br>");
+
+    str9 = "Please visit Microsoft and Microsoft!";
+    var n3 = str.replace(/Microsoft/g, "W3Schools");
+    document.write("replace :" + n3 + "<br>");
+    document.write("===================<br>");
+
+    var text1 = "Hello World!";       // String
+    var text2 = text1.toUpperCase();  // text2 is text1 converted to upper
+    document.write("uppercase :" + text2 + "<br>");
+    document.write("===================<br>");
+
+
+    var text1 = "Hello World!";       // String
+    var text3 = text1.toLowerCase();  // text2 is text1 converted to lower
+    document.write("lowercase :" + text3 + "<br>");
+    document.write("===================<br>");
+  
+
+    var text4 = "Hello";
+    var text5 = "World";
+    var text6 = text4.concat(" ", text5);
+    document.write("concat :" + text6 + "<br>");
+    document.write("===================<br>");
+
+    var text7 = "Hello" + " " + "World!";
+    var text8 = "Hello".concat(" ", "World!");
+    document.write("concat :" + text8 + "<br>");
+    document.write("===================<br>");
+
+    var str = "       Hello World!        ";
+    alert(str.trim());
+
+
+
+    var str = "       Hello World!        ";
+    alert(str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
+    if (!String.prototype.trim) {
+        String.prototype.trim = function () {
+            return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        };
+    }
+    //document.write("replace :" + n1 + "<br>");
+    document.write("===================<br>");
+    var str = "       Hello World!        ";
+    alert(str.trim());
+   // document.write("replace :" + n1 + "<br>");
+  //  document.write("===================<br>");
+
+    var st = "HELLO WORLD";
+    st.charAt(0);            // returns H
+    alert(st.charAt(0));
+  //  document.write("replace :" + n1 + "<br>");
+   // document.write("===================<br>");
+ 
+
+     var st1 = "HELLO WORLD";
+
+    st1.charCodeAt(0);         // returns 72
+    alert(st1.charCodeAt(0));
+ //   document.write("replace :" + n1 + "<br>");
+   // document.write("===================<br>");
+   
+    var st2 = "HELLO WORLD";
+    st2[0];                   // returns H
+    alert(st2[0]);
+   // document.write("replace :" + n1 + "<br>");
+   // document.write("===================<br>");
+
+  
+    //var str = "HELLO WORLD";
+    //str[0] = "A";             // Gives no error, but does not work
+    //str[0];                   // return
+    //document.write("replace :" + n1 + "<br>");
+    //document.write("===================<br>");
+ 
+
+    var txtr = "a,b,c,d,e";   // String
+    txtr.split(",");          // Split on commas
+    txtr.split(" ");          // Split on spaces
+    txtr.split("|");          // Split on pipe
+    alert(txtr.split(","));
+    alert(txtr.split(" "));
+    alert(txtr.split("|"));
+   // document.write("replace :" + n1 + "<br>");
+   // document.write("===================<br>");
+   
+
+    var txts = "Hello";       // String
+    txts.split("");           // Split in characters
+    alert(txts.split(""))
+   // document.write("replace :" + n1 + "<br>");
+  //  document.write("===================<br>");
+
+</script>
+</body>
+</html>

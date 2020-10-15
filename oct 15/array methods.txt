@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>array methods</title>
+</head>
+<body>
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <script type="text/javascript">
+        //converting arrays to string
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo").innerHTML = fruits.toString();
+        var fruit = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo1").innerHTML = fruit.join();//join method joins the elements
+        //popping
+        var fruits1 = ["Banana", "Orange", "Apple", "Mango"];
+        fruits1.pop();
+        document.write(fruits1.pop() + "<br>");
+        var fruits2 = ["Banana", "Orange", "Apple", "Mango"];
+        var x = fruits2.pop();
+        document.write(x + "<br>");
+        var fruits3 = ["Banana", "Orange", "Apple", "Mango"];
+        fruits3.push("Kiwi");
+        document.write(fruits3.push("kiwi") + "<br>");
+        var fruits4 = ["Banana", "Orange", "Apple", "Mango"];
+        var y = fruits4.push("grapes");
+        document.write(y + "<br>");
+        var fruits5 = ["Banana", "Orange", "Apple", "Mango"];
+        fruits5.shift();            // Removes the first element
+        document.write(fruits5.shift() + "<br>");
+        var fruits6 = ["Banana", "Orange", "Apple", "Mango"];
+        var z = fruits6.shift();
+        document.write("<br>" + z);
+        var fruits7 = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo2").innerHTML = fruits7;
+
+        function myFunction() {
+            fruits7.unshift("Lemon");
+            document.getElementById("demo2").innerHTML = fruits7;
+        }
+        var fruits8 = ["Banana", "Orange", "Apple", "Mango"];
+        fruits8[0] = "Kiwi";        // Changes the first element of fruits to "Kiwi"
+       // document.write(fruits8 + "<br>");
+        document.getElementById("demo3").innerHTML = fruits8;
+        var fruits9 = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo4").innerHTML = fruits9;
+
+        function myFunction() {
+            fruits9[fruits9.length] = "Kiwi";
+            document.getElementById("demo4").innerHTML = fruits9;
+        }
+        var fruits10 = ["Banana", "Orange", "Apple", "Mango"];
+        delete fruits10[0];           // Changes the first element in fruits to undefined
+        document.getElementById("demo2").innerHTML =
+            "The first fruit is: " + fruits10[0];
+        var fruits11 = ["Banana", "Orange", "Apple", "Mango"];
+        fruits11.splice(2, 0, "Lemon", "Kiwi");
+        document.getElementById("demo2").innerHTML = "New Array:<br>" + fruits11;
+        var myGirls = ["Cecilie", "Lone"];
+        var myBoys = ["Emil", "Tobias", "Linus"];
+        var myChildren = myGirls.concat(myBoys);   // Concatenates (joins) myGirls and myBoys
+        document.write(myChildren + "<br>");
+    </script>
+</body>
+</html>
