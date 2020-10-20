@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ASSIGNMENT</title>
+    <style>
+        .a{
+            width:225px;
+            height:35px;
+            border:dotted;
+            color:yellow;
+            background-color:blue;
+            padding:3px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight:bold;
+            font-style:italic;
+            font-size:medium;
+
+        }
+        .b {
+            width: 225px;
+            height: 35px;
+            border: dotted;
+            color: red;
+            background-color: green;
+            padding: 3px;
+            font-family:'Times New Roman';
+            font-weight: bold;
+            font-style: italic;
+            font-size:larger;
+        }
+        .c {
+            width: 225px;
+            height: 35px;
+            border: double;
+            color: blue;
+            background-color: pink;
+            padding: 3px;
+            font-family:Arial;
+            font-weight: bold;
+            font-style: italic;
+            font-size: small;
+        }
+        .d {
+            width: 225px;
+            height: 35px;
+            border: dashed;
+            color: orange;
+            background-color: aqua;
+            padding: 3px;
+            font-family:Calibri;
+            font-weight: bold;
+            font-style: italic;
+            font-size:large;
+        }
+        .e {
+            width: 225px;
+            height: 35px;
+            border: dotted;
+            color: cyan;
+            background-color:darkmagenta;
+            padding: 3px;
+            font-family:sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size:smaller;
+        }
+        .f {
+            width: 225px;
+            height: 35px;
+            border: dotted;
+            color:blueviolet;
+            background-color:sandybrown;
+            padding: 3px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            font-size: medium;
+        }
+        .g{
+            font-family:Algerian;
+            font-size:x-large;
+            font-weight:200;
+        }
+    </style>
+</head>
+<body>
+    <p id="p1"><b>Hello All</b></p>
+    <button id="b1" onclick="f1()">click</button>
+    <script>
+        function f1() {
+            document.getElementById("p1").style.backgroundColor = "blueviolet";
+            document.getElementById("p1").style.border = "solid";
+            document.getElementById("p1").style.fontStyle = "Times New Roman";
+            document.getElementById("p1").className="g";
+        }
+    </script>
+    <h1 id="btn">helloworld</h1>
+    <h2 id="btn1">programming is fun</h2>
+    <h3 id="btn2">this is printing</h3>
+    <h4 id="btn3">this is printing again</h4>
+    <h5 id="btn4">this is crazy</h5>
+    <h6 id="btn5">This is fun</h6>
+    <button id="h1" onclick="mybtn()">click me</button>
+    <p>After performing the required operations the button gets displayed</p>
+    <script>
+        function mybtn()
+        {
+            document.getElementById("h1").disabled = true;
+            alert("button disabled");
+            document.getElementById("btn").className = "a";
+            document.getElementById("btn1").className = "b";
+            document.getElementById("btn2").className = "c";
+            document.getElementById("btn3").className = "d";
+            document.getElementById("btn4").className = "e";
+            document.getElementById("btn5").className = "f";
+        }
+    </script>
+    <p>after performing the required operations the buttons get diabled</p>
+  
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My first webtab</title>
+</head>
+<body>
+    <h1>Click on HelloWorld it will display something new</h1>
+    <h1 onclick="this.innerHTML='Welcome to JavaScript!!!!!!' ">HelloWorld</h1>
+ <h1>function implementation</h1>
+    <h1 onclick="coffee(this)">HelloWorld</h1>
+    <h2 onclick="tea(this)">Programming is fun</h2>
+    <h3 onclick="milk(this)">this is printing</h3>
+    <h4 onclick="butter(this)">This is crazy!!!!!!!!!</h4>
+    <!--function implementation-->
+       
+    <script>
+        function coffee(id)
+        {
+            id.innerHTML = "welcome to javascript";
+        }
+        function tea(id) {
+            id.innerHTML = "we are learning JavaScript document object module";
+        }
+        function milk(id) {
+            id.innerHTML = "JavaScriot found easy to learn";
+        }
+        function butter(id) {
+            id.innerHTML = "JavaScript runs on Google Chrome's V8 Engine";
+        }
+        function displayDate()
+        {
+            document.getElementById("demo").innerHTML = Date();
+        }
+        function extraevent(color) {
+            color.innerHTML = "this is crazy";
+        }
+        function extraevent1(color) {
+            color.innerHTML = "Mouse Over Me";
+        }
+        function extraevent2(color) {
+            color.innerHTML = "Mouse down";
+        }
+        function extraevent3(color) {
+            color.innerHTML = "Mouse up";
+        }
+        
+    </script>
+    <div onmouseover="extraevent(this)" onmouseout="extraevent1(this)" onmousedown="extraevent2(this)" onmouseup="extraevent3(this)"
+        style="background-color:cyan; width:150px;height:100px;padding:40px;"
+>Show me up</div>
+   <!-- <div  onmouseup="extraevent3(this)"
+        style="background-color:purple; width:150px;height:100px;padding:40px;"
+>Show me the mouse up operations</div>-->
+    
+    <p>cilck the button to display date and time</p>
+    <button onclick="displayDate()">click for date</button>
+    <p id="demo"></p>
+
+    <p>The addEventLister method demonstration w.r.t the button</p>
+    <button id="white"> click me here</button>
+    <script>
+        document.getElementById("white").addEventListener("click", function () {
+            alert("this is eventlistener method example");
+            console.log("eventlistener");
+            document.write("this is eventlistener");
+        });
+    </script>
+    <p>this is demo about eventlistener with an explicit function</p>
+    <button id="Object">click again</button>
+    <script>
+        document.getElementById("Object").addEventListener("click", example);
+        function example()
+        {
+
+            alert("this is demo about eventlistener method with alert console");
+            document.write("this is demo about eventlistener method with document console");
+            console.log("this is demo about eventlistener method with console");
+        }
+    </script>
+
+
+</body>
+</html>

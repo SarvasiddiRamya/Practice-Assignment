@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>The typeof operator returns the type of a variable, object, function or expression.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        document.getElementById("demo").innerHTML =
+            typeof "john" + "<br>" +
+            typeof 3.14 + "<br>" +
+            typeof NaN + "<br>" +
+            typeof false + "<br>" +
+            typeof [1, 2, 3, 4] + "<br>" +
+            typeof { name: 'Ramya', age: 20 } + "<br>" +
+            typeof new Date() + "<br>" +
+            typeof function () { } + "<br>" +
+            typeof myCar + "<br>" +
+            typeof null;
+    </script>
+    <p>The String() method can convert a number to a string.</p>
+
+    <p id="demo1"></p>
+
+    <script>
+        var x = 123;
+        document.getElementById("demo1").innerHTML =
+            String(x) + "<br>" +
+            String(314) + "<br>" +
+            String(150 + 93);
+    </script>
+    <p id="demo2"></p>
+
+    <script>
+        var x = [];
+        document.getElementById("demo2").innerHTML =
+            (5 + null) + "<br>" +
+            ("5" + null) + "<br>" +
+            ("5" + 2) + "<br>" +
+            ("5" - 2) + "<br>" +
+            ("5" * "2") + "<br>" +
+            ("5" / "2") + "<br>"
+    </script>
+
+</body>
+</html>

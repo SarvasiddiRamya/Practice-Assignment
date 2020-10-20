@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>assignment</title>
+</head>
+<body>
+    <h1 id="hid1">This is function</h1>
+    <h1 id="hid2">this is crazy</h1>
+    <h1 id="hid3">this is printing</h1>
+    <img id="hid4" src="picture.jpg" />
+    <button onclick="f1()">click to change id1</button>
+    <button onclick="f2()">click to change id2</button>
+    <button onclick="f3()">click to change id3</button>
+    <button onclick="f4()">click to change id4</button>
+    <script>
+        function f1()
+        {
+            document.getElementById("hid1").innerHTML = "yes it is";
+            alert("text1 is changed");
+        }
+        function f2() {
+            document.getElementById("hid2").innerHTML = "good morning";
+            alert("text2 is changed");
+        }
+        function f3() {
+            document.getElementById("hid3").innerHTML = "printing";
+            alert("text3 is changed");
+        }
+        function f4() {
+            document.getElementById("hid4").src="a2.jpg";
+            alert("text4 is changed");
+        }
+    </script>
+</body>
+</html>

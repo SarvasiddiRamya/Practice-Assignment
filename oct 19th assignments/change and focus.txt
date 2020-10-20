@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>change and focus</title>
+</head>
+<body>
+    <p>This example uses the addEventListener() method to attach a "change" event to an input element.</p>
+
+    Enter your name: <input type="text" id="fname">
+
+    <p>When you leave the input field, a function is triggered which transforms the input text to upper case.</p>
+
+    <script>
+        document.getElementById("fname").addEventListener("change", myFunction);
+
+        function myFunction() {
+            var x = document.getElementById("fname");
+            x.value = x.value.toUpperCase();
+        }
+    </script>
+    
+        <p>This example uses the addEventListener() method to attach a "focus" event to an input element.</p>
+
+        Enter your name: <input type="text" id="fname1">
+
+        <script>
+            document.getElementById("fname1").addEventListener("focus", myFunction);
+
+            function myFunction() {
+                document.getElementById("fname1").style.backgroundColor = "aqua";
+            }
+        </script>
+
+    </body>
+</html>

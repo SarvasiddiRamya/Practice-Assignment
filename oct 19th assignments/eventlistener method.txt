@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Second webtab</title>
+</head>
+<body>
+   <h2>JavaScript Eventlistener method</h2>
+    <p>Eventlistener method to two clicks on single button</p>
+    <button id="Black">click me</button>
+    <script>
+        var x = document.getElementById("Black");
+        x.addEventListener("click", variable);
+        x.addEventListener("click", variable1);
+        x.addEventListener("click", variable2);
+        function variable() {
+            alert("This is first Event");
+            alert("eventlistener method is easy first event");
+            console.log("we are good to go");
+
+        }
+        function variable1() {
+            alert("This is second Event");
+          alert("eventlistener method is easy second event");
+            console.log("we are good to go");
+        }
+        function variable2() {
+            alert("we are intelligent");
+            alert("eventlistener method is easy");
+            console.log("we are good to go");
+        }
+    </script>
+</body>
+</html>

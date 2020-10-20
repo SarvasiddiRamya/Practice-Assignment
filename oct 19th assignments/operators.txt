@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>this is third webtab</title>
+</head>
+<body>
+    <p>This is a demo about eventlistener method() on windows object</p>
+    <p>try resizing the browser(ctrl + "+button" window by this resize event occurs</p>
+    <p id="demo"></p>
+    <p>this is a demo about how to pass parameters values when using the eventlistenermethod() method</p>
+    <p>click the button to perform mathematics operations below</p>
+    <button id="mybtn">multiplication</button>
+    <button id="mybtn1">addition</button>
+    <button id="mybtn2">substraction</button>
+    <button id="mybtn3">division</button>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        var x = 10;
+        var y = 20;
+        document.getElementById("mybtn").addEventListener("click", function () {
+
+            multiplication(x, y);
+
+        });
+        document.getElementById("mybtn1").addEventListener("click", function () {
+
+            addition(x, y);
+        });
+        document.getElementById("mybtn2").addEventListener("click", function () {
+
+            substraction(x, y);
+        });
+        document.getElementById("mybtn3").addEventListener("click", function () {
+
+            division(x, y);
+        });
+        function multiplication(c, d) {
+            var result = c * d;
+            document.getElementById("demo").innerHTML = result;
+        }
+        function addition(c, d) {
+            var result1 = c + d;
+            document.getElementById("demo1").innerHTML = result1;
+        }
+        function substraction(c, d) {
+            var result2 = c - d;
+            document.getElementById("demo2").innerHTML = result2;
+        }
+        function division(c, d) {
+            var result3 = c / d;
+            document.getElementById("demo3").innerHTML = result3;
+        }
+    </script>
+    <script>
+        window.addEventListener("reload", function () {
+            document.getElementById("demo").innerHTML = HTMLTimeElement();
+        });
+    </script>
+</body>
+</html>

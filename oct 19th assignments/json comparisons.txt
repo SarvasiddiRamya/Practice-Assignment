@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Input your age and click the button:</p>
+
+    <input id="age" value="18" />
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            var age, voteable;
+            age = document.getElementById("age").value;
+            if (isNaN(age)) {
+                voteable = "Input is not a number";
+            }
+            else {
+                voteable = (age < 18) ? "Too young" : "Old enough";
+            }
+            document.getElementById("demo").innerHTML = voteable + " to vote.";
+        }
+    </script>
+    <p>The NOT operator (!) returns true for false statements and false for true statements.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var x = 6;
+        var y = 3;
+
+        document.getElementById("demo").innerHTML =
+            !(x === y) + "<br>" +
+            !(x > y);
+    </script>
+</body>
+</html>
