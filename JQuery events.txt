@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        i = 0;
+        $(document).ready(function () {
+            $("input").keypress(function () {
+                $("span").text(i += 1);
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("input").keydown(function () {
+                $("input").css("background-color", "aqua");
+            });
+            $("input").keyup(function () {
+                $("input").css("background-color", "pink");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("img").load(function () {
+                alert("Image loaded.");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function () {
+                alert("Submitted");
+            });
+        });
+    </script>
+    <script>
+        var x = 0;
+        $(document).ready(function () {
+            $("div").scroll(function () {
+                $("span").text(x += 1);
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(window).unload(function () {
+                alert("Goodbye!");
+            });
+        });
+    </script>
+    <script>
+        var x = 0;
+        $(document).ready(function () {
+            $(window).resize(function () {
+                $("span").text(x += 1);
+            });
+            $("#resize").click(function () {
+                $(window).resize();
+            });
+        });
+    </script>
+</head>
+<body>
+    Enter your data: <input type="text">
+
+    <p>Keypresses: <span>0</span></p>
+
+    Enter your data: <input type="text">
+
+    <p>Enter your name in the input field above. It will change background color on keydown and keyup.</p>
+
+    <img src="picture.jpg" width="304" height="236">
+
+    <p><b>Note:</b> Depending on the browser, the load event may not trigger if the image is cached.</p>
+    <form action="">
+        First name: <input type="text" name="FirstName" value="Sarvasiddi"><br>
+        Last name: <input type="text" name="LastName" value="Ramya"><br>
+        <input type="submit" value="Submit">
+
+        <p>Try the scrollbar in the div</p>
+
+        <div style="border:1px solid black;width:300px;height:100px;overflow:scroll;">
+            In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.
+            <br><br>
+            'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in this world haven't had the advantages that you've had.'
+        </div>
+        <p>When you click <a href="https://www.google.com/search?q=hyderabadi+biryani+images&rlz=1C1CHBF_enIN916IN916&sxsrf=ALeKk025EDfJdnjLBsZOMn9FYKTmzKc1UA:1603221163298&tbm=isch&source=iu&ictx=1&fir=oZZBP9-_RtF4xM%252CR0zJn7y-HvstlM%252C_&vet=1&usg=AI4_-kQAmixO0afh5_kuH9ujfm_pAOI9zA&sa=X&ved=2ahUKEwjZ57yf8MPsAhVBRKwKHawlB5EQ9QF6BAgKED4&biw=1366&bih=657#imgrc=8yC3db8qhvF8jM">this link</a>, or close the window, an alert box will be triggered.</p>
+
+        <p>Window resized <span>0</span> times.</p>
+
+        <button id="resize">Trigger resize event for the window</button>
+
+    </form>
+
+
+</body>
+</html>

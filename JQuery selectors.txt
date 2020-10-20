@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("[id]").css("background-color", "cyan");
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(":button").css("background-color", "aqua");
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("tr:even").css("background-color", "yellow");
+            $("tr:odd").css("background-color", "lightgreen");
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("a[target='_blank']").hide();
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#target").click(function () {
+                $("a[target!='_blank']").hide();
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <h1>Welcome to My Homepage</h1>
+    <p class="intro">My name is Ramya.</p>
+    <p>I live in Visakhapatnam.</p>
+    <p>My best friend is Suraj.</p>
+
+    What is your favourite cartoon character:
+    <ul id="choose">
+        <li>Heidi</li>
+        <li>Doreamon</li>
+        <li>Shinchan</li>
+        <li>Mickey Mouse</li>
+    </ul>
+    <form action="">
+        Name: <input type="text" name="user"><br>
+        Password: <input type="password" name="password"><br>
+        <button type="button">Useless Button</button>
+        <input type="button" value="Another useless button"><br>
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <h1>Welcome to My Web Page</h1>
+
+    <table border="1">
+        <tr>
+            <th>STATES</th>
+            <th>CAPITALS</th>
+        </tr>
+        <tr>
+            <td>Assam</td>
+            <td>Dispur</td>
+        </tr>
+        <tr>
+            <td>Bihar</td>
+            <td>Patna</td>
+        </tr>
+        <tr>
+            <td>TamilNadu</td>
+            <td>Chennai</td>
+        </tr>
+        <tr>
+            <td>Karnataka</td>
+            <td>Banglore</td>
+        </tr>
+        <tr>
+            <td>Telangan</td>
+            <td>Hyderabad</td>
+        </tr>
+    </table>
+    <h2>This is a heading</h2>
+
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <p><a href="https://www.w3schools.com/html/" target="_blank">HTML Tutorial</a></p>
+    <p><a href="https://www.w3schools.com/css/">CSS Tutorial</a></p>
+
+    <button>Click me to see target</button>
+
+    <button id="target">Click me to see target!</button>
+
+
+
+</body>
+</html>
