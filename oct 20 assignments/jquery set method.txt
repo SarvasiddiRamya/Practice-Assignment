@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                $("#test1").text("Programming is fun!");
+            });
+            $("#btn2").click(function () {
+                $("#test2").html("<b>This is crazy!</b>");
+            });
+            $("#btn3").click(function () {
+                $("#test3").val("Sunday also holiday");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#github").attr({
+                    "href": "https://www.w3schools.com/jquery/",
+                    "title": "W3Schools jQuery Tutorial",
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#btn4").click(function () {
+                $("#w3s").attr("href", function (i, origValue) {
+                    return origValue + "/jquery/";
+                });
+            });
+        });
+    </script>
+</head>
+<body>
