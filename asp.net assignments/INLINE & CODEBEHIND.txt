@@ -1,0 +1,64 @@
+<%@ Page Language="C#" %>
+
+<!DOCTYPE html>
+
+<script runat="server">
+
+    protected void button1_Click(object sender, EventArgs e)
+    {
+        Response.Write("button is working fine");
+    }
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>inline</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="button1" runat="server" Text="clickme" ForeColor="blue" OnClick="button1_Click" />
+        </div>
+    </form>
+</body>
+</html>
+
+CODEBEHIND TECHNIQUE
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="codebehind technique1.aspx.cs" Inherits="codebehind_technique1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="button1" runat="server" Text="CLICK HERE" ForeColor="Red" OnClick="button1_Click" />
+        </div>
+    </form>
+</body>
+</html>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class codebehind_technique1 : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void button1_Click(object sender, EventArgs e)
+    {
+        Response.Write("Programming is fun");
+    }
+}
+

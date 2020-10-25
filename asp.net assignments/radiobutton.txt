@@ -1,0 +1,73 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Assignment3.aspx.cs" Inherits="Assignment3" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:RadioButton ID="RadioButton1" runat="server" Font-Size="15px" ForeColor="Blue" Font-Bold="true" GroupName="rb1" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Blue" />
+            <asp:RadioButton ID="RadioButton2" runat="server" Font-Size="15px" ForeColor="Red" Font-Bold="true" GroupName="rb2" OnCheckedChanged="RadioButton2_CheckedChanged" Text="Red" />
+            <asp:RadioButton ID="RadioButton3" runat="server" Font-Size="15px" ForeColor="Green" Font-Bold="true" GroupName="rb3" OnCheckedChanged="RadioButton3_CheckedChanged" Text="Green" />
+        </div>
+        <p>
+            <asp:Button ID="b1" runat="server" Text="selected" OnClick="b1_Click" />
+        </p>
+    </form>
+    <asp:Label ID="colorid" runat="server"></asp:Label>
+
+</body>
+</html>
+
+
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Assignment3 : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Label3_Click(object sender, EventArgs e)
+    {
+        colorid.Text = " ";
+        if (RadioButton1.Checked)
+        {
+            colorid.Text = "the color is" + RadioButton1.Text;
+        }
+        else if (RadioButton2.Checked)
+        {
+            colorid.Text = "the color is" + RadioButton2.Text;
+        }
+        else
+        {
+            colorid.Text = "the color is" + RadioButton3.Text;
+        }
+
+    }
+
+    protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+    {
+        Response.Write("This is in blue color");
+    }
+    protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
+    {
+        Response.Write("This is in red color");
+    }
+
+    protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
+    {
+        Response.Write("This is in green color");
+    }
+
+    protected void b1_Click(object sender, EventArgs e)
+    {
+
+    }
+}

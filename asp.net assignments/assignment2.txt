@@ -1,0 +1,63 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="ASSIGNMENT2SERVER.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <style type="text/css">
+        .auto-style1 {
+            margin-left: 29px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="button1" runat="server" Text="clickme" ForeColor="blue" OnClick="button1_Click" />
+       
+            <h4>provide the below information</h4>
+            <asp:Label ID="Label1" runat="server" Text="Username" Font-Bold="true" Font-Size="Medium" ForeColor="#ff66ff"/>
+            <asp:TextBox ID="TextBox1" runat="server" style="margin-left:50px" /><br />
+            <asp:Label ID="Label2" runat="server" Text="Upload a file" Font-Bold="true" ForeColor="YellowGreen" />
+            <asp:FileUpload ID="FileUpload1" runat="server" style="margin-left:24px" Width="277px"/><br /><br />
+
+             <asp:Label ID="label3" runat="server" Text="Username" /><br />
+            <asp:TextBox ID="TextBox2" runat="server" />
+        
+        <p>
+            <asp:Button ID="Button2" runat="server" Text="Submit" OnClick="Button1_Click" />
+        </p>
+      </div>
+    </form>
+    <asp:Label ID="userinput" runat="server" />
+    
+</body>
+</html>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace ASSIGNMENT2SERVER
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void button1_Click(object sender, EventArgs e)
+        {
+            Response.Write("programming is fun");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Write("submitted");
+        }
+    }
+}
