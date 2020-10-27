@@ -1,0 +1,69 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Assignment2.aspx.cs" Inherits="Cookies_in_ASP.Assignment2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+              <p>The datalist shows data of the datatable</p>
+            <asp:DataList ID="DataList1" runat="server" Width="419px" CssClass="auto-style1">
+                <ItemTemplate>
+                    <asp:Table ID="Table1"  CellPadding ="2" Cellspacing="0" Border="1" BorderStyle="Dashed" style="width:250px; height:100px;background-color:antiquewhite" runat="server"/>
+                    <tr>
+                        <td>
+                            <strong>FirstName :</strong> <span><%#Eval("FirstName :")%></span><br />
+                             <strong>LastName :</strong> <span><%#Eval("LastName :")%></span><br />
+                             <strong>Designation :</strong> <span><%#Eval("Designation :")%></span><br />
+                            <strong>Location :</strong> <span><%#Eval("Location :")%></span><br />
+                            <strong>Country :</strong> <span><%#Eval("Country :")%></span><br />
+                        </td>
+                        </tr>
+
+                </ItemTemplate>
+            </asp:DataList>
+        </div>
+    </form>
+</body>
+</html>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+
+namespace Cookies_in_ASP
+{
+    public partial class Assignment2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            DataTable Table = new DataTable();//created an instance
+            Table.Columns.Add("FirstName :");
+            Table.Columns.Add("LastName :");
+            Table.Columns.Add("Designation :");
+            Table.Columns.Add("Location :");
+            Table.Columns.Add("Country :");
+
+            Table.Rows.Add("Ramya","Sarvasiddi","Manager","Hyderabad","India");
+            Table.Rows.Add("Firdos","Shaik","Technical Lead","Banglore","India");
+            Table.Rows.Add("Sagarika", "Bodala","Project Leader","Chennai","India");
+            Table.Rows.Add("Maheswari", "Doddi","HR","Kerala","India");
+            Table.Rows.Add("Tulasi", "Gunturu","Team Leader","Visakhapatnam","India");
+            Table.Rows.Add("Pratyusha", "Voleti","IT Lead","Pune","India");
+            Table.Rows.Add("Vasavi", "Sarvasiddi", "Financial Executive", "Chennai", "India");
+            Table.Rows.Add("Jarina", "Shaik", "Marketing Officer", "Kerala", "India");
+            Table.Rows.Add("Ponny", "Talapureddy", "CEO", "Los Angels", "USA");
+            Table.Rows.Add("Pratyusha", "Voleti", "Executive Officer", "Pune", "India");
+
+            DataList1.DataSource = Table;
+            DataList1.DataBind();
+        }
+    }
+}

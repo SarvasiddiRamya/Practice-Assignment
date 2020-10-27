@@ -1,0 +1,72 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Assignment3.aspx.cs" Inherits="Cookies_in_ASP.Assignment3" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            Employee Name: <asp:Label ID="Label1" runat="server" Text="label" /><br />
+             Employee ID: <asp:Label ID="Label2" runat="server" Text="label1" /><br />
+             Employee Designation: <asp:Label ID="Label3" runat="server" Text="label2" /><br />
+             Employee Email: <asp:Label ID="Label4" runat="server" Text="label3" /><br />
+             Employee Contact: <asp:Label ID="Label5" runat="server" Text="label4" />
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Cookies_in_ASP
+{
+    public partial class Assignment3 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            HttpCookie cookie = new HttpCookie("emp_name");
+            HttpCookie cookie1 = new HttpCookie("emp_id");
+            HttpCookie cookie2 = new HttpCookie("emp_designation");
+            HttpCookie cookie3 = new HttpCookie("emp_email");
+            HttpCookie cookie4 = new HttpCookie("emp_contact");
+
+            //assign value to the created cookie
+            cookie.Value = "Ramya";
+            cookie1.Value = "11223344";
+            cookie2.Value = "Associate Professional";
+            cookie3.Value = "sarvasiddiramya@gamil.com";
+            cookie4.Value = "1234567890";
+
+            //add cookie to the response instance
+            Response.Cookies.Add(cookie);
+            Response.Cookies.Add(cookie1);
+            Response.Cookies.Add(cookie2);
+            Response.Cookies.Add(cookie3);
+            Response.Cookies.Add(cookie4);
+
+            //fetch the cookie created
+
+            var cookie_value = Response.Cookies["emp_name"].Value;
+            var cookie1_value = Response.Cookies["emp_id"].Value;
+            var cookie2_value = Response.Cookies["emp_designation"].Value;
+            var cookie3_value = Response.Cookies["emp_email"].Value;
+            var cookie4_value = Response.Cookies["emp_contact"].Value;
+
+            Label1.Text = cookie_value;
+            Label2.Text = cookie1_value;
+            Label3.Text = cookie2_value;
+            Label4.Text = cookie3_value;
+            Label5.Text = cookie4_value;
+
+        }
+    }
+}
