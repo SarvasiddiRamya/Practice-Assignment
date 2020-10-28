@@ -1,0 +1,85 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="datagriddatabase1.aspx.cs" Inherits="sqlclient.datagriddatabase1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1>Students Table</h1>
+            <asp:DataGrid ID="DataGrid1" runat="server" />
+            <br />
+             <h2>Employee Table</h2>
+            <asp:DataGrid ID="DataGrid2" runat="server" />
+            <br />
+             <h3>Indian Cricket Team Table</h3>
+            <asp:DataGrid ID="DataGrid3" runat="server" />
+            <br />
+             <h4>Indian Railway Syatem Table</h4>
+            <asp:DataGrid ID="DataGrid4" runat="server" />
+            <br />
+             <h5>Bank Table</h5>
+            <asp:DataGrid ID="DataGrid5" runat="server" />
+            
+
+        </div>
+    </form>
+</body>
+</html>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace sqlclient
+{
+    public partial class datagriddatabase1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //Establish the connect to the database
+            using (SqlConnection connect = new SqlConnection("server=DESKTOP-VK5NIVT; database=students;integrated security=SSPI"))
+            {
+                SqlDataAdapter SDA = new SqlDataAdapter("Select * from students1", connect);
+                DataSet ds = new DataSet();//to convert the data into the grid
+                SDA.Fill(ds);
+                DataGrid1.DataSource = ds;
+                DataGrid1.DataBind();
+
+
+                SqlDataAdapter SDA1 = new SqlDataAdapter("Select * from employees5", connect);
+                DataSet ds1 = new DataSet();//to convert the data into the grid
+                SDA1.Fill(ds1);
+                DataGrid2.DataSource = ds1;
+                DataGrid2.DataBind();
+
+                SqlDataAdapter SDA2 = new SqlDataAdapter("Select * from IndianCricket", connect);
+                DataSet ds2 = new DataSet();//to convert the data into the grid
+                SDA2.Fill(ds2);
+                DataGrid3.DataSource = ds2;
+                DataGrid3.DataBind();
+
+                SqlDataAdapter SDA3 = new SqlDataAdapter("Select * from IndianRailway", connect);
+                DataSet ds3 = new DataSet();//to convert the data into the grid
+                SDA3.Fill(ds3);
+                DataGrid4.DataSource = ds3;
+                DataGrid4.DataBind();
+
+                SqlDataAdapter SDA4 = new SqlDataAdapter("Select * from bank", connect);
+                DataSet ds4 = new DataSet();//to convert the data into the grid
+                SDA4.Fill(ds4);
+                DataGrid5.DataSource = ds4;
+                DataGrid5.DataBind();
+            }
+        }
+       
+    }
+}
