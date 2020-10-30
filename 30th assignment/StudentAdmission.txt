@@ -1,0 +1,162 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentsAdmission1.aspx.cs" Inherits="Validations.StudentsAdmission1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 185px;
+        }
+        .auto-style2 {
+            width: 231px;
+        }
+        .auto-style3 {
+            margin-left: 114px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+        </div>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style1">FirstName</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox1" runat="server" Width="244px" BackColor="#FFCCFF"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox1" ErrorMessage="Enter the FirstName" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">LastName</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox2" runat="server" BackColor="#FFCCFF" Width="244px"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter the SecondName" ForeColor="Red" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Father&#39;s Name</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox3" runat="server" Width="245px" BackColor="#FFCCFF"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox3" ErrorMessage="Enter the Father's Name" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Mother&#39;s Name</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox4" runat="server" Width="245px" BackColor="#FFCCFF"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox4" ErrorMessage="Enter the Mother's Name" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Gender</td>
+                <td class="auto-style2">
+                    <asp:RadioButton ID="RadioButton1" runat="server" Text="Male" GroupName="Gender" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:RadioButton ID="RadioButton2" runat="server" Text="Female" GroupName="Gender" />
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox1" ErrorMessage="Select Gender" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Aggregate</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox5" runat="server" BackColor="#FFCCFF" Width="244px"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Enter the Aggregate" ForeColor="#FF3300" ControlToValidate="TextBox5"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="TextBox5" ErrorMessage="aggregate should be above 60%" Operator="GreaterThan" ValueToCompare="60%"></asp:CompareValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Course</td>
+                <td class="auto-style2">
+                    <asp:RadioButton ID="RadioButton3" runat="server" Text="ECE" GroupName="Course" OnCheckedChanged="RadioButton3_CheckedChanged" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+&nbsp;<asp:CheckBox ID="CheckBox1" runat="server" Text="Analog Communication" />
+&nbsp;<br />
+                    &nbsp;<asp:CheckBox ID="CheckBox2" runat="server" Text="MicroController" />
+                    <br />
+&nbsp;&nbsp;<asp:CheckBox ID="CheckBox3" runat="server" Text="Electronics and Devices Circuits" />
+                    <br />
+                    <asp:RadioButton ID="RadioButton4" runat="server" Text="CSE" GroupName="Course" OnCheckedChanged="RadioButton4_CheckedChanged" />
+                    <br />
+                    <asp:CheckBox ID="CheckBox4" runat="server" Text="Data Structures" />
+                    <br />
+                    <asp:CheckBox ID="CheckBox5" runat="server" Text="Computer Networks" />
+                    <br />
+                    <asp:CheckBox ID="CheckBox6" runat="server" Text="Object Oriented Programming" />
+                </td>
+                <td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Select the Course" ForeColor="Red" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+        </table>
+        <asp:Button ID="Button1" runat="server" Text="SUBMIT" CssClass="auto-style3" Width="158px" OnClick="Button1_Click" />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Validations
+{
+    public partial class StudentsAdmission1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "Registered Successfully";
+        }
+
+        protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton3.Checked)
+            {
+                if (CheckBox1.Checked)
+                    Response.Write("You have selected Analog Communication");
+                if (CheckBox2.Checked)
+                    Response.Write("You have selected MicroControllers");
+                if (CheckBox3.Checked)
+                    Response.Write("You have selected Electronics Devices and Circuits");
+            }
+        }
+
+        protected void RadioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton4.Checked)
+            {                 
+                if (CheckBox4.Checked)
+                    Response.Write("You have selected Data Structures");
+                if (CheckBox5.Checked)
+                    Response.Write("You have selected Computer Networks");
+                if (CheckBox6.Checked)
+                    Response.Write("You have selected Object Oriented Programming");
+            }
+        }
+    }
+}
