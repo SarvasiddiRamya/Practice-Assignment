@@ -1,0 +1,170 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentAssignment.aspx.cs" Inherits="StudentDataBound.StudentAssignment" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 515px;
+        }
+        .auto-style2 {
+            width: 520px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+        <table style="border:3px solid blue;text-align:left;width:300px;padding-top:0px;background-color:antiquewhite;border-radius:8px;font-size:20px" />
+            <asp:Repeater ID="RP1" runat="server">
+                <HeaderTemplate>
+                    <table style="width:200px;padding-top:0px;background-color:aliceblue">
+                        <td style="font-size:20px;text-align:center;height:48px">
+                            <asp:Label ID="Label9" runat="server" Text="Student Profile"></asp:Label>
+                        </td>
+                    </table>
+                    </HeaderTemplate>
+                <ItemTemplate>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label1" runat="server" Text="StdRollNum"></asp:Label>
+                </td>
+                <td>&nbsp;
+                    <asp:Label ID="Label10" runat="server" Text='<%#Eval("StdRollNum") %>'></asp:Label>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label2" runat="server" Text="StdName"></asp:Label>
+                </td>
+                <td>&nbsp;
+                                        <asp:Label ID="Label11" runat="server" Text='<%#Eval("StdName") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label3" runat="server" Text="StdEmail"></asp:Label>
+                </td>
+                <td>&nbsp;
+                                        <asp:Label ID="Label12" runat="server" Text='<%#Eval("StdEmail") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label4" runat="server" Text="StdMobileNum"></asp:Label>
+                </td>
+                <td>&nbsp;
+                                        <asp:Label ID="Label13" runat="server" Text='<%#Eval("StdMobileNum") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label5" runat="server" Text="StdImage"></asp:Label>
+                </td>
+                <td rowspan ="5">&nbsp;
+                    <asp:Image ID="lbl1" runat="server" Width="60px" ImageUrl='<%#"https://www.google.com/search?q=image+of+apple&rlz=1C1CHBF_enIN916IN916&oq=image+of+apple&aqs=chrome..69i57.14237j0j15&sourceid=chrome&ie=UTF-8" %>' />
+                    <br />
+                                        <asp:Label ID="Label14" runat="server" Text='<%#Eval("StdImage") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label6" runat="server" Text="StdGender"></asp:Label>
+                </td>
+                <td>&nbsp;
+                                        <asp:Label ID="Label15" runat="server" Text='<%#Eval("StdGender") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label7" runat="server" Text="StdCity"></asp:Label>
+                </td>
+                <td>&nbsp;
+                                        <asp:Label ID="Label16" runat="server" Text='<%#Eval("StdCity") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label8" runat="server" Text="StdAddress"></asp:Label>
+                </td>
+                <td>&nbsp;
+                                        <asp:Label ID="Label17" runat="server" Text='<%#Eval("StdAddress") %>'></asp:Label>
+
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+                    </ItemTemplate>
+                <FooterTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                @developed by ramya<br />
+                                @All rights reserved
+                            </td>
+                        </tr>
+                    </table>
+                </FooterTemplate>
+                </asp:Repeater>
+     </div>
+    </form>
+     
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:StudentDataConnection %>" SelectCommand="SELECT * FROM [StudentData]"></asp:SqlDataSource>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace StudentDataBound
+{
+    public partial class StudentAssignment : System.Web.UI.Page
+    {
+        
+            SqlConnection Connect = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentDataConnection"].ConnectionString);
+            protected void Page_Load(object sender, EventArgs e)
+            {
+                if (!IsPostBack)
+                {
+                    Bind();
+                }
+            }
+            public void Bind()
+            {
+                SqlCommand cmd = new SqlCommand("select * from StudentData", Connect);
+
+                SqlDataAdapter Adapt = new SqlDataAdapter(cmd);
+                Connect.Open();
+                DataSet Ds = new DataSet();
+                Adapt.Fill(Ds, "StudentData");
+                RP1.DataSource = Ds.Tables[0];
+                RP1.DataBind();
+                Connect.Close();
+            }
+        
+    }
+}
