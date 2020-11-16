@@ -1,0 +1,230 @@
+//HomeController.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MyApp.Model;
+using MyApp.Db.DbOperations;
+
+namespace EntityFrameworkMVC.Controllers
+{
+    public class HomeController : Controller
+    {
+        EmployeeRepository repository = null;
+        public HomeController()
+        {
+            repository = new EmployeeRepository();  
+        }
+  
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(EmployeeModel model)
+            {
+             if(ModelState.IsValid)
+            {
+                int id = repository.AddEmployee(model);
+                if(id>0)
+                {
+                    ModelState.Clear();
+                    ViewBag.Issuccess = "Data Added";
+                }
+            }
+               return View();
+            }
+
+        
+    }
+}
+
+//Create.cshtml
+
+@model MyApp.Model.EmployeeModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<h1> @ViewBag.Issuccess</h1>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>EmployeeModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Addressid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Addressid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Addressid, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+    <h2>Address</h2>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address.Details, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address.Details, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address.State, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address.State, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address.State, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address.Country, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address.Country, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+//AdrdressModel.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyApp.Model
+{
+   public class AddressModel
+    {
+        public int id { get; set; }
+        public string Details { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+    }
+}
+
+
+//EmployeeModel.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
+namespace MyApp.Model
+{
+  public class EmployeeModel
+    {
+        public int id { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
+        public int? Addressid { get; set; }
+        [Required]
+        public string Code { get; set; }
+
+        public AddressModel Address { get; set; }
+    }
+}
+
+//EmployeeRepository.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MyApp.Model;
+
+namespace MyApp.Db.DbOperations
+{
+    public class EmployeeRepository
+    {
+        public int AddEmployee(EmployeeModel model)
+        {
+            using (var context = new Db_EmployeeentityEntities())
+            {
+                Employee emp = new Employee()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Code = model.Code,
+             
+                };
+                if(model.Address != null)
+                {
+                    emp.Address = new Address()
+                    {
+                        Details = model.Address.Details,
+                        State = model.Address.State,
+                        Country = model.Address.Country
+                    };
+                }
+
+                context.Employee.Add(emp);
+
+                context.SaveChanges();
+
+                 return emp.id;
+            }
+        }
+    }
+}
