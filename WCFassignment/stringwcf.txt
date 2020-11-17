@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Example
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IExample1" in both code and config file together.
+    [ServiceContract]
+    public interface IExample1
+    {
+        [OperationContract]
+        string GetData(int value);
+
+        [OperationContract]
+        string hii(string name);
+
+        [OperationContract]
+        string hello(string name, string age);
+
+        [OperationContract]
+        string GetData1(int value1);
+    }
+}
+
+[DataContract]//declared and assign the variables
+public class CompositeType
+{
+    bool boolvalue = true;
+    string stringValue = "Hello World";
+
+    [DataMember]
+    public bool BoolValue
+    {
+        get { return boolvalue; }
+        set { boolvalue = value; }
+    }
+
+    [DataMember]
+    public string StringValue
+    {
+        get { return stringValue; }
+        set { stringValue = value; }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Palindromewcf
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Example" in both code and config file together.
+    public class Example : IExample1
+    {
+        public string GetData(int value)
+        {
+            return string.Format("enter value is : {0}", value);
+
+        }
+
+        public string hii(string name)
+        {
+            return string.Format("Hii : {0}", name);
+
+        }
+
+        public string hello(string name, string age)
+        {
+            return string.Format("Hii: {0}, Your age is :{0}",name,age);
+
+        }
+
+        public string GetData1(int value1)
+        {
+            return string.Format("enter value is : {0}", value1);
+
+        }
+    }
+}

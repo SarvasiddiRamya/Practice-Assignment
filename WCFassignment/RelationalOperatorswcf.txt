@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Assignment
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService2" in both code and config file together.
+    [ServiceContract]
+    public interface IService2
+    {
+        [OperationContract]
+        //void DoWork();
+        bool Greater(int num1, int num2);//Greaterthan
+
+        [OperationContract]
+        bool Lessthan(int num1, int num2);//lessthan
+
+        [OperationContract]
+        bool Equalto(int num1, int num2);//Equalto
+    }
+}
+
+[DataContract]//declared and assign the variables
+public class CompositeType
+{
+    bool boolvalue = true;
+    string stringValue = "Hello World";
+
+    [DataMember]
+    public bool BoolValue
+    {
+        get { return boolvalue; }
+        set { boolvalue = value; }
+    }
+
+    [DataMember]
+    public string StringValue
+    {
+        get { return stringValue; }
+        set { stringValue = value; }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Assignment
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service2" in both code and config file together.
+    public class Service2 : IService2
+    {
+        public bool Greater(int num1, int num2)
+        {
+            return num1 > num2;
+        }
+
+        public bool Lessthan(int num1, int num2)
+        {
+            return num1 < num2;
+        }
+
+        public bool Equalto(int num1, int num2)
+        {
+            return num1 == num2;
+        }
+    }
+}
