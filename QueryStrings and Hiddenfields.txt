@@ -1,0 +1,262 @@
+<%@ Page Trace="true" Language="C#" AutoEventWireup="true" CodeBehind="WebCount.aspx.cs" Inherits="StateMaagementWebform.WebCount" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="Button1" runat="server" Text="Hit Count" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" Text="open another webpage" PostBackUrl="~/Gethiddenfieldvalues.aspx" OnClick="Button2_Click" />
+            </div>
+            <asp:HiddenField ID="hfCount1" runat="server" Value ="0"/>
+         <asp:HiddenField ID="hdnfldCurrentDateTime" runat="server" />  
+        <br />
+        <br />
+        <asp:Button ID="Button3" runat="server" OnClick="Button2_Click" Text="Redirect" />
+        <br />
+        <br />
+        <asp:Label ID="lbl" runat="server" Text=""/>
+        <br />
+        <br />
+        <asp:HiddenField ID="HiddenField2" runat="server" />
+        <asp:Label ID="Label1" runat="server"></asp:Label>
+       <asp:HiddenField ID="HiddenField3" runat="server" />
+        <asp:Button ID="Button4" runat="server" Text="Button" OnClick="Button3_Click" />
+                <asp:Label ID="Label2" runat="server"></asp:Label>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace StateMaagementWebform
+{
+    public partial class WebCount : System.Web.UI.Page
+    {
+        int count ;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (HiddenField2.Value == String.Empty)
+                HiddenField2.Value = "3";
+            HiddenField2.Value = (Convert.ToInt32(HiddenField2.Value) + 1).ToString();
+            Label1.Text = HiddenField2.Value;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            count = int.Parse(hfCount1.Value);
+            count += 1;
+            Response.Write("Number of clicks on the button are : " + count);
+            hfCount1.Value = count.ToString();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            hdnfldCurrentDateTime.Value = DateTime.Now.ToString();
+            lbl.Text = Convert.ToString(hdnfldCurrentDateTime.Value);
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            HiddenField3.Value = "Ramya";
+            Label2.Text = HiddenField3.Value;
+        }
+    }
+}
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QueryState.aspx.cs" Inherits="QueryStrings.QueryState" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 179px;
+        }
+        
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+                    
+            <table>
+                <caption>Login Form</caption>
+                <tr>
+                    <td>UserName</td>
+                    <td>
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:Label ID="lblstatus" runat="server" ForeColor="Navy"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+            <br />
+         <asp:Button ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="Button2" runat="server" Text="Reset"  />
+        
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace QueryStrings
+{
+    public partial class QueryState : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+                TextBox1.Focus();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "admin" && TextBox2.Text == "admin")
+            {
+                
+                Response.Redirect("HomePage.aspx?Name = " + TextBox1.Text +  "&Pwd =" + TextBox2.Text);
+                Response.Write("Login Successful");
+            }
+                
+            
+            else
+                lblstatus.Text = "Invalid user credentials,Login failed";
+        }
+    }
+}
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Gethiddenfieldvalues.aspx.cs" Inherits="StateMaagementWebform.Gethiddenfieldvalues" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h3>Welcome to another page</h3>
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace StateMaagementWebform
+{
+    public partial class Gethiddenfieldvalues : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string value = Request.Form["hfCount1"];
+            Response.Write("your current hit count is :" + value);
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace StateManagementMVC
+{
+    public partial class Form1 : Form
+    {
+        int count = 0;//Global declaration
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //logic to demonstrate count on button click
+
+            count += 1;
+            MessageBox.Show("Number of Hit counts are : " + count);
+        }
+    }
+}
+
+<%@ Page Trace="true" Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="QueryStrings.HomePage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+        </div>
+    </form>
+</body>
+</html>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace QueryStrings
+{
+    public partial class HomePage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string name = Request.Form["Textbox1"];
+            Response.Write("Hello " + name  + "welcome to our site");
+        }
+    }
+}
