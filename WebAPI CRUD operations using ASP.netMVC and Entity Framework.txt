@@ -1,0 +1,570 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Net.Http;
+using System.Net.Http.Headers;
+
+namespace MVC
+{
+    public static class GlobalVariables
+    {
+        public static HttpClient WebApiClient = new HttpClient();
+        static GlobalVariables()
+        {
+            WebApiClient.BaseAddress = new Uri("http://localhost:54535/api/");
+            WebApiClient.DefaultRequestHeaders.Clear();
+            WebApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+    }
+}
+
+
+//mvcEmployeeModel.cs
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+
+namespace MVC.Models
+{
+    public class mvcEmployeeModel
+    {
+        public int EmployeeID { get; set; }
+        [Required(ErrorMessage ="This field is required")]
+        public string EmployeeName { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public string Position { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public Nullable<int> Age { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public Nullable<int> Salary { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        public Nullable<int> ContactNo { get; set; }
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/default.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Employee Register", "Index", "Employee", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+           
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>Web Api CRUD Operations in MVC Project</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/alertify.min.js"></script>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/*styles for validation helpers*/
+.field-validation.error{
+    color:#b94a48;
+    font-size:10px;
+}
+.field-validation.valid{
+    display:none;
+ }
+
+input.input-validation.error
+{
+    border:1px solid #b94a48;
+}
+input[type="checkbox"].input-validation.error {
+    border: 0 none;
+}
+.validation.summary.errors{
+   color:#b94a48;
+}
+.validation-summary.valid
+{
+    display:none;
+}
+input,textarea
+{
+    display:block;
+    height:100%;
+    padding:5px 10px;
+    background:none;
+    background-image:none;
+    border:1px solid #a0b3b0;
+    color:#fff;
+    border-radius:0;
+    transition: border-color .25s ease,box-shadow .25s ease;
+}
+.button{
+    border:1px solid #fff;
+    outline:none;
+    border-radius:0;
+    padding:10px 10px;
+    font-weight:400;
+    background:#2a3843;
+    color:#fff;
+    -webkit-appearance:none;
+}
+.button:hover,.button.focus{
+    color:#fff !important;
+}
+.form-body{
+    background: rgb(19,35,47);
+    padding:20px 40px;
+    max-width:600px;
+    margin:30px auto;
+    box-shadow:0 4px 10px 4px rgb(19,35,47);
+
+
+}
+body{
+    background:#fff;
+}
+label{
+    color:#fff;
+    font-size:22px;
+}
+.fore-body input,textarea{
+    font-size:20px;
+}
+textarea:focus, input:focus{
+    outline:none;
+}
+.table-heading{
+    background-color:#2a3843;
+    color:white;
+}
+.add.new{
+    background-color:#1ab188;
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace MVC
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Employee", action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+}
+
+
+@model IEnumerable<MVC.Models.mvcEmployeeModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+
+
+<p>
+    <a href="@Url.Action("AddOrEdit","Employee")" class="btn btn-default"><i class="fa fa-plus"></i>Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </th>
+        <th>Action</th>
+    </tr>
+        </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNo)
+        </td>
+        <td>
+            <a href="@Url.Action("AddOrEdit","Employee",new {id=item.EmployeeID})" class="btn btn-default"><i class="fa fa-pencil"></i>Edit</a>
+            <a onclick="Delete(@item.EmployeeID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+        </td>
+    </tr>
+}
+
+</table>
+@section scripts
+{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+
+        });
+        function Delete(Id) {
+            alertify.confirm('Web Api CRUD Operations', 'Are you sure you want to delete this record?', function () {
+                window.location.href = '@Url.Action("Delete","Employee")/' + Id;
+            }, null);
+        }
+    </script>
+    }
+
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Description;
+using WebApi_in_MVC.Models;
+
+namespace WebApi_in_MVC.Controllers
+{
+    public class EmployeeController : ApiController
+    {
+        private CRUDDBEntities db = new CRUDDBEntities();
+
+        // GET: api/Employee
+        public IQueryable<Employee> GetEmployees()
+        {
+            return db.Employees;
+        }
+
+        // GET: api/Employee/5
+        [ResponseType(typeof(Employee))]
+        public IHttpActionResult GetEmployee(int id)
+        {
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(employee);
+        }
+
+        // PUT: api/Employee/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutEmployee(int id, Employee employee)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            if (id != employee.EmployeeID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(employee).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeeExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/Employee
+        [ResponseType(typeof(Employee))]
+        public IHttpActionResult PostEmployee(Employee employee)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            db.Employees.Add(employee);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeID }, employee);
+        }
+
+        // DELETE: api/Employee/5
+        [ResponseType(typeof(Employee))]
+        public IHttpActionResult DeleteEmployee(int id)
+        {
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            db.Employees.Remove(employee);
+            db.SaveChanges();
+
+            return Ok(employee);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool EmployeeExists(int id)
+        {
+            return db.Employees.Count(e => e.EmployeeID == id) > 0;
+        }
+    }
+}
+
+
+using MVC.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVC.Controllers
+{
+    public class EmployeeController : Controller
+    {
+        // GET: Employee
+        public ActionResult Index()
+        {
+            IEnumerable<mvcEmployeeModel> empList;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employee").Result;
+            empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
+            return View(empList);
+        }
+        public ActionResult AddOrEdit(int Id=0)
+        {
+            if (Id==0)
+            return View(new mvcEmployeeModel());
+            else
+            {
+
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employee/" + Id.ToString()).Result;
+                return View(response.Content.ReadAsAsync<mvcEmployeeModel>().Result);
+            }
+        }
+        [HttpPost]
+        public ActionResult AddOrEdit(mvcEmployeeModel emp)
+        {
+            if (emp.EmployeeID == 0)
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Employee", emp).Result;
+                TempData["SuccessMessage"] = "Saved Successfully";
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Employee/"+ emp.EmployeeID,emp).Result;
+                TempData["SuccessMessage"] = "Updated Successfully";
+            }
+            return RedirectToAction("Index");
+            
+        }
+        public ActionResult Delete(int Id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Employee/"+ Id.ToString()).Result;
+            TempData["SuccessMessage"] = "Deleted Successfully";
+            return RedirectToAction("Index");
+        }
+
+
+    }
+}
+
+@model  MVC.Models.mvcEmployeeModel
+@{
+    ViewBag.Title = "AddOrEdit";
+
+}
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.EmployeeID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeName)
+            @Html.EditorFor(model => model.EmployeeName)
+            @Html.ValidationMessageFor(model => model.EmployeeName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Position)
+            @Html.EditorFor(model => model.Position)
+            @Html.ValidationMessageFor(model => model.Position)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age)
+            @Html.EditorFor(model => model.Age)
+            @Html.ValidationMessageFor(model => model.Age)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary)
+            @Html.EditorFor(model => model.Salary)
+            @Html.ValidationMessageFor(model => model.Salary)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactNo)
+            @Html.EditorFor(model => model.ContactNo)
+            @Html.ValidationMessageFor(model => model.ContactNo)
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn button" />
+            <input type="reset" value="Reset" class="btn button" />
+
+        </div>
+    }
+
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery");
+
+    }
+
+
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated from a template.
+//
+//     Manual changes to this file may cause unexpected behavior in your application.
+//     Manual changes to this file will be overwritten if the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace WebApi_in_MVC.Models
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Employee
+    {
+        public int EmployeeID { get; set; }
+        public string EmployeeName { get; set; }
+        public string Position { get; set; }
+        public Nullable<int> Age { get; set; }
+        public Nullable<int> Salary { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> ContactNo { get; set; }
+    }
+}
+
+
+
