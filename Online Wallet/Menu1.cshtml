@@ -1,0 +1,29 @@
+@{
+    ViewBag.Title = "Menu";
+}
+
+@*<h2>Menu1</h2>*@
+
+<br />
+<br />
+<br />
+<div class="form-group" align="center" style="font-size:medium">
+
+    <a href="@Url.Action("Add", "HomePage")" class="btn btn-default"><b>Add Money</b></a>
+
+</div>
+
+<div class="form-group" align="center">
+
+    <a href="@Url.Action("CheckBalance", "HomePage")" class="btn btn-default"><b>Check Balance</b></a>
+
+
+</div>
+<div class="form-group" align="center" style="">
+
+    <a href="@Url.Action("Transaction", "HomePage")" class="btn btn-default"><b>Transfer Money</b></a>
+    
+</div>
+<div>
+    @Html.ActionLink("Back to Home", "Home1")
+</div>
