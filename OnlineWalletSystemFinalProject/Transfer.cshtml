@@ -1,0 +1,71 @@
+@model OnlineWalletProject.Models.UserModel
+
+@{
+    ViewBag.Title = "Transfer";
+}
+
+<div style="margin-left:600px">
+    <h2 style="color:dodgerblue">Transfer</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>UserModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+           
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AccountNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AccountNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.To_AccountNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.To_AccountNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.To_AccountNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" style="color:white;background-color:dodgerblue;font-weight:bold" value="Transfer" name="btn" class="btn btn-default" />
+                    <input type="submit" style="color:white;background-color:palevioletred;font-weight:bold" value="View Balance" name="btn" class="btn btn-default" />
+                    @ViewBag.show
+                </div>
+                @*@ViewBag.show*@
+            </div>
+        </div>
+    }
+</div>
+    @if (ViewBag.data != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.data");
+            };
+        </script>
+    }
+
+    <div>
+        @Html.ActionLink("Back to Home", "Home1")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

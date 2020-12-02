@@ -1,0 +1,39 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 style="color:darkblue">Online Wallet Application</h1>
+    <p class="lead">This Application consists of mainly Four Functionalities</p>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2 style="text-align:center;color:darkblue">Add Money</h2>
+        <p>
+            As an online wallet user, an account must be created first and then you can add money into your wallet!
+        </p>
+        <p>
+            <a href="@Url.Action("Add","Account")" class="btn btn-default">Add Money</a>
+        </p>
+   
+    </div>
+    <div class="col-md-4">
+        <h2 style="text-align:center;color:darkblue">Check Balance</h2>
+        <p>As a payment wallet account holder, you can check the balance by clicking on check balance.</p>
+        <p>
+            <a href="@Url.Action("CheckBalance","Account")" class="btn btn-default">Check Balance</a>
+        </p>
+    
+    </div>
+    <div class="col-md-4">
+        <h2 style="text-align:center;color:darkblue">Transfer</h2>
+        <p>As an account holder you will be able to transfer money from your account to another payment wallet holder.</p>
+        <p>
+            <a href="@Url.Action("Transfer","Account")" class="btn btn-default">Transfer</a>
+        </p>
+     
+    </div>
+  
+</div>
